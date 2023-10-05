@@ -8,11 +8,11 @@ class CategoriaTestCase(TestCase):
 
     def test_create_categoria(self):
         # Teste de criação de categoria válida
-        status_code = self.categoria_controller.create_categoria("Nova Categoria")
+        status_code,obj_categoria = self.categoria_controller.create_categoria("Nova Categoria")
         self.assertEqual(status_code, 200)
 
         # Teste de criação de categoria inválida (nome em branco)
-        status_code = self.categoria_controller.create_categoria("")
+        status_code,obj_categoria = self.categoria_controller.create_categoria("")
         self.assertEqual(status_code, 400)
 
     def test_read_categoria(self):
@@ -22,11 +22,12 @@ class CategoriaTestCase(TestCase):
 
     def test_update_categoria(self):
         # Crie uma categoria de exemplo
-        categoria_id = self.categoria_controller.create_categoria("Categoria Antiga")
+        status_code,categoria = self.categoria_controller.create_categoria("Categoria Antiga")
 
         # Teste de atualização de categoria
-        updated_categoria = self.categoria_controller.update_categoria(1, "Categoria Atualizada")
-        self.assertIsNotNone(updated_categoria[1])
+        status_code,updated_categoria = self.categoria_controller.update_categoria(categoria.id, "Categoria Atualizada")
+        self.assertIsNotNone(updated_categoria)
+        
         self.assertEqual(updated_categoria.nome, "Categoria Atualizada")
 
         # Teste de atualização de categoria inválida (categoria inexistente)
@@ -40,9 +41,9 @@ class CategoriaTestCase(TestCase):
         categoria.create_categoria("Categoria para Excluir")
         
         # Teste de exclusão de categoria
-        status_code = self.categoria_controller.delete_categoria(1)
+        status_code,obj_categoria = self.categoria_controller.delete_categoria(1)
         self.assertEqual(status_code, 200)
 
         # Teste de exclusão de categoria inválida (categoria inexistente)
-        status_code = self.categoria_controller.delete_categoria(999)
+        status_code,obj_categoria = self.categoria_controller.delete_categoria(999)
         self.assertEqual(status_code, 400)

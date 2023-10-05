@@ -7,11 +7,11 @@ class Categoria():
     def create_categoria(self, nome):
         try:
             if nome.rstrip() =="":
-                return 400
+                return 400,self.obj_categoria
             else:
                 self.obj_categoria = Mdl_categoria(nome=nome)
                 self.obj_categoria.save()
-                return 200,self.obj_categoria.id
+                return 200,self.obj_categoria
             
         except Exception as e:
             return None
@@ -25,10 +25,10 @@ class Categoria():
 
     def update_categoria(self, id, nome):
         try:
-            categoria = Mdl_categoria.objects.get(id=id)
-            categoria.nome = nome
-            categoria.save()
-            return 200,self.obj_categoria.id
+            self.obj_categoria = Mdl_categoria.objects.get(id=id)
+            self.obj_categoria.nome = nome
+            self.obj_categoria.save()
+            return 200,self.obj_categoria
         except Mdl_categoria.DoesNotExist:
             return None
 
@@ -38,4 +38,4 @@ class Categoria():
             self.obj_categoria.delete()
             return 200,self.obj_categoria.id
         except Mdl_categoria.DoesNotExist:
-            return 400
+            return 400,self.obj_categoria.id
