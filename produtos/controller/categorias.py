@@ -11,7 +11,8 @@ class Categoria():
             else:
                 self.obj_categoria = Mdl_categoria(nome=nome)
                 self.obj_categoria.save()
-                return 200
+                return 200,self.obj_categoria.id
+            
         except Exception as e:
             return None
 
@@ -27,14 +28,14 @@ class Categoria():
             categoria = Mdl_categoria.objects.get(id=id)
             categoria.nome = nome
             categoria.save()
-            return categoria
+            return 200,self.obj_categoria.id
         except Mdl_categoria.DoesNotExist:
             return None
 
     def delete_categoria(self, id):
         try:
-            categoria = Mdl_categoria.objects.get(id=id)
-            categoria.delete()
-            return 200
+            self.obj_categoria = Mdl_categoria.objects.get(id=id)
+            self.obj_categoria.delete()
+            return 200,self.obj_categoria.id
         except Mdl_categoria.DoesNotExist:
             return 400

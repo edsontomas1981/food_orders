@@ -1,13 +1,17 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from produtos.controller.categorias import Categoria
+import json
 
-def delete_categoria (request):
-    if request.method == 'GET':
-        categoria = Categoria()
-        categoria.delete_categoria(1)
-        return JsonResponse({'view': 'delete_categorias'}) #Cadastro efetuado com sucesso
+def delete_categoria(request):
 
-    elif request.method == 'POST':
-        return JsonResponse({'status': 200}) #Cadastro efetuado com sucesso
+    if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        try:
+            categoria = Categoria()
+            categoria.delete_categoria(data['id'])
+            return JsonResponse({'status': 'Categoria excluída com sucesso'}, status=200)
+        except Exception as e:
+            return JsonResponse({'error': f'Erro ao excluir categoria: {str(e)}'}, status=500)
+    
+    elif request.method == 'GET':
+        return JsonResponse({'error': 'Método GET não é permitido para esta ação'}, status=405)
