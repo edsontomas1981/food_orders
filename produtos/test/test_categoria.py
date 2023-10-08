@@ -7,6 +7,7 @@ class CategoriaTestCase(TestCase):
         self.categoria_controller = Categoria()
 
     def test_create_categoria(self):
+        print('test_c_categoria')
         # Teste de criação de categoria válida
         status_code,obj_categoria = self.categoria_controller.create_categoria("Nova Categoria")
         self.assertEqual(status_code, 200)
@@ -16,11 +17,13 @@ class CategoriaTestCase(TestCase):
         self.assertEqual(status_code, 400)
 
     def test_read_categoria(self):
+        print('test_r_categoria')
         # Teste de leitura de categorias
         categorias = self.categoria_controller.read_categoria()
         self.assertIsNotNone(categorias)
 
     def test_update_categoria(self):
+        print('test_u_categoria')
         # Crie uma categoria de exemplo
         status_code,categoria = self.categoria_controller.create_categoria("Categoria Antiga")
 
@@ -35,7 +38,7 @@ class CategoriaTestCase(TestCase):
         self.assertIsNone(non_existent_categoria)
 
     def test_delete_categoria(self):
-
+        print('test_d_categoria')
         # Crie uma categoria de exemplo
         categoria=Categoria()
         categoria.create_categoria("Categoria para Excluir")

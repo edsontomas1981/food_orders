@@ -1,11 +1,11 @@
 from django.db import models
 from produtos.models.categoria import Categoria
-from produtos.models.fornecedores import Fornecedores
+from produtos.models.fornecedores import Fornecedor
 
 class Produto(models.Model):
     nome = models.CharField(max_length=100)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    fornecedor = models.ForeignKey(Fornecedores, on_delete=models.CASCADE)
+    fornecedor = models.ForeignKey(Fornecedor, on_delete=models.CASCADE)
     descricao = models.TextField(blank=True, null=True)
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     cod_barras = models.CharField(max_length=50, blank=True, null=True)
