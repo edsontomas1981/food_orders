@@ -1,0 +1,2 @@
+from .contatos import contato
+

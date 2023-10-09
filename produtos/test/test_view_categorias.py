@@ -11,7 +11,6 @@ class CategoriaViewsTest(TestCase):
         self.categoria2 = Categoria.objects.create(nome='Categoria2')
 
     def test_create_categoria_view(self):
-        print('test_c_view_categoria')
         url = reverse('create_categoria')  # Substitua 'create_categoria' pelo nome da URL real
         response = self.client.get(url)
         self.assertEqual(response.status_code, 405)  # GET não é permitido
@@ -22,14 +21,12 @@ class CategoriaViewsTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_read_categoria_view(self):
-        print('test_r_view_categoria')
         url = reverse('read_categoria')  # Substitua 'read_categoria' pelo nome da URL real
         response = self.client.post(url)  # Deve ser um POST
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'categorias')  # Verifica se 'categorias' está na resposta
 
     def test_update_categoria_view(self):
-        print('test_u_view_categoria')
         url = reverse('update_categoria')  # Substitua 'update_categoria' pelo nome da URL real
         response = self.client.get(url)
         self.assertEqual(response.status_code, 405)  # GET não é permitido
@@ -45,7 +42,6 @@ class CategoriaViewsTest(TestCase):
         self.assertEqual(self.categoria1.nome, 'Novo Nome')
 
     def test_delete_categoria_view_post(self):
-        print('test_d_post_view_categoria')
         url = reverse('delete_categoria')  # Substitua 'delete_categoria' pelo nome da URL real
 
         # Teste POST com dados JSON no corpo
@@ -59,7 +55,6 @@ class CategoriaViewsTest(TestCase):
             self.categoria1.refresh_from_db()
 
     def test_delete_categoria_view_get(self):
-        print('test_d_get_view_categoria')
         url = reverse('delete_categoria')  # Substitua 'delete_categoria' pelo nome da URL real
 
         # Teste GET (deve retornar um erro 405 Method Not Allowed)
