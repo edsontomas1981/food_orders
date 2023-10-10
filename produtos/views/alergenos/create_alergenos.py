@@ -7,7 +7,6 @@ def create_alergenos(request):
         try:
             data = json.loads(request.body.decode('utf-8'))
             alergeno_nome = data.get('alergeno')
-
             if alergeno_nome:
                 alergeno = Alergenos()
                 alergeno.create_alergeno(alergeno_nome)

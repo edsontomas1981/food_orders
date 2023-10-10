@@ -5,11 +5,11 @@ from django.core import serializers
 def read_alergeno(request):
     if request.method == 'POST':
         alergeno = Alergenos()
-        alergenos_qs = alergeno.read_alergeno()
+        alergenos_qs = alergeno.read_alergenos()
         alergenos_list = [
             {
                 'id': alergeno.pk,
-                'nome': alergeno.nome,  # Substitua 'nome' pelo nome correto do campo em alergeno
+                'nome': alergeno.alergeno_nome,  # Substitua 'nome' pelo nome correto do campo em alergeno
                 # Adicione outros campos conforme necessário
             }
             for alergeno in alergenos_qs

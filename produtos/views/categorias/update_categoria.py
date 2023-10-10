@@ -7,12 +7,10 @@ def update_categoria(request):
         try:
             data = json.loads(request.body.decode('utf-8'))
             categoria_id = data.get('categoria_id')  # Substitua 'categoria_id' pelo campo apropriado
-            novo_nome = data.get('novo_nome')  # Substitua 'novo_nome' pelo campo apropriado
-
-            if categoria_id is not None and novo_nome is not None:
+            categoria_nome = data.get('categoria')  # Substitua 'categoria' pelo campo apropriado
+            if categoria_id is not None and categoria_nome is not None:
                 categoria=Categoria()
-                categoria.update_categoria(categoria_id,novo_nome)
-
+                categoria.update_categoria(categoria_id,categoria_nome)
                 return JsonResponse({'status': 'Categoria atualizada com sucesso'}, status=200)
             else:
                 return JsonResponse({'error': 'Dados incompletos na solicitação'}, status=400)

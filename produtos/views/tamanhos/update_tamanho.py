@@ -7,12 +7,10 @@ def update_tamanho(request):
         try:
             data = json.loads(request.body.decode('utf-8'))
             tamanho_id = data.get('tamanho_id')  # Substitua 'tamanho_id' pelo campo apropriado
-            novo_nome = data.get('novo_nome')  # Substitua 'novo_nome' pelo campo apropriado
-
-            if tamanho_id is not None and novo_nome is not None:
+            tamanho_nome = data.get('tamanho_nome')  # Substitua 'tamanho_nome' pelo campo apropriado
+            if tamanho_id is not None and tamanho_nome is not None:
                 tamanho=Tamanho()
-                tamanho.update_tamanho(tamanho_id,novo_nome)
-
+                tamanho.update_tamanho(tamanho_id,tamanho_nome)
                 return JsonResponse({'status': 'tamanho atualizada com sucesso'}, status=200)
             else:
                 return JsonResponse({'error': 'Dados incompletos na solicitação'}, status=400)

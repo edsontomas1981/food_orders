@@ -8,7 +8,7 @@ def delete_tamanho(request):
         data = json.loads(request.body.decode('utf-8'))
         try:
             tamanho = Tamanho()
-            tamanho.delete_tamanho(data['id'])
+            tamanho.delete_tamanho(data['tamanho_id'])
             return JsonResponse({'status': 'tamanho excluída com sucesso'}, status=200)
         except Exception as e:
             return JsonResponse({'error': f'Erro ao excluir tamanho: {str(e)}'}, status=500)

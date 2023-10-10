@@ -8,7 +8,7 @@ def delete_categoria(request):
         data = json.loads(request.body.decode('utf-8'))
         try:
             categoria = Categoria()
-            categoria.delete_categoria(data['id'])
+            categoria.delete_categoria(data['categoria_id'])
             return JsonResponse({'status': 'Categoria excluída com sucesso'}, status=200)
         except Exception as e:
             return JsonResponse({'error': f'Erro ao excluir categoria: {str(e)}'}, status=500)

@@ -9,7 +9,7 @@ def read_tamanho(request):
         tamanhos_list = [
             {
                 'id': tamanho.pk,
-                'nome': tamanho.nome,  # Substitua 'nome' pelo nome correto do campo em tamanho
+                'nome': tamanho.tamanho,  # Substitua 'nome' pelo nome correto do campo em tamanho
                 # Adicione outros campos conforme necessário
             }
             for tamanho in tamanhos_qs
