@@ -32,7 +32,7 @@ class CategoriaViewsTest(TestCase):
         self.assertEqual(response.status_code, 405)  # GET não é permitido
 
         # Teste POST
-        data = {'categoria_id': self.categoria1.id, 'novo_nome': 'Novo Nome'}
+        data = {'categoria_id': self.categoria1.id, 'categoria': 'Novo Nome'}
         response = self.client.post(url, data, content_type='application/json')
         self.assertEqual(response.status_code, 200)
 
@@ -43,13 +43,11 @@ class CategoriaViewsTest(TestCase):
 
     def test_delete_categoria_view_post(self):
         url = reverse('delete_categoria')  # Substitua 'delete_categoria' pelo nome da URL real
-
         # Teste POST com dados JSON no corpo
-        data = {'id': self.categoria1.id}  # Substitua pelo ID da categoria a ser excluída
+        data = {'categoria_id': self.categoria1.id}  # Substitua pelo ID da categoria a ser excluída
         response = self.client.post(url, json.dumps(data), content_type='application/json')
         self.assertEqual(response.status_code, 200)
         
-
         # Verifique se a categoria foi realmente excluída (se aplicável)
         with self.assertRaises(Categoria.DoesNotExist):
             self.categoria1.refresh_from_db()
