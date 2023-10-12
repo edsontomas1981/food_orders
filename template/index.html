@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-  <!-- Required meta tags -->
+  <!--  meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Star Admin</title>
@@ -187,55 +187,81 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="/cadastrar_fornecedor" method="POST">
+                <form id="form_fornecedores">
                   <div class="row">
                     <div class="form-floating col-sm-6 pl-1 pr-1 ">
-                        <input type="text" class="form-control" id="cnpj_fornecedor" name="cnpj_fornecedor" placeholder=" " required>
-                        <label for="cnpj_fornecedor">CPF/CNPJ:</label>
+                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder=" ">
+                        <label for="cnpj">CPF/CNPJ:</label>
                     </div>
                     <div class="form-floating col-sm-6 pl-1 pr-1 ">
-                      <input type="text" class="form-control" id="raz_soc_fornecedor" name="raz_soc_fornecedor" placeholder=" " required>
+                      <input type="text" class="form-control" id="raz_soc_fornecedor" name="raz_soc_fornecedor" placeholder=" " >
                       <label for="raz_soc_fornecedor">Nome/Razão Social:</label>
                     </div>
-        
-                    <div class="form-floating col-sm-4 pl-1 pr-1 mt-1 ">
-                      <input type="text" class="form-control" id="cep_fornecedor" name="cep_fornecedor" placeholder=" " required>
-                      <label for="cep_fornecedor">Cep:</label>
+          
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1 ">
+                      <input type="text" class="form-control" id="cep" name="cep" placeholder=" " >
+                      <label for="cep">Cep:</label>
+                    </div>
+          
+                    <div class="form-floating col-sm-4 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder=" " >
+                      <label for="logradouro">Endereço:</label>
+                    </div>                    
+          
+                    <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="numero" name="numero" placeholder=" " >
+                      <label for="numero">Número:</label>
+                    </div>   
+                              
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1 ">
+                      <input type="text" class="form-control" id="complemento" name="complemento" placeholder=" " >
+                      <label for="complemento">Cep:</label>
                     </div>
 
-                    <div class="form-floating col-sm-6 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="logradouro_fornecedor" name="logradouro_fornecedor" placeholder=" " required>
-                      <label for="logradouro_fornecedor">Endereço:</label>
-                    </div>                    
-
-                    <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="numero_fornecedor" name="numero_fornecedor" placeholder=" " required>
-                      <label for="numero_fornecedor">Número:</label>
-                    </div>   
                     <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="bairro_fornecedor" name="bairro_fornecedor" placeholder=" " required>
-                      <label for="bairro_fornecedor">Bairro:</label>
+                      <input type="text" class="form-control" id="bairro" name="bairro" placeholder=" " >
+                      <label for="bairro">Bairro:</label>
                     </div> 
                     <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="cidade_fornecedor" name="cidade_fornecedor" placeholder=" " required>
-                      <label for="cidade_fornecedor">Cidade:</label>
+                      <input type="text" class="form-control" id="cidade" name="cidade" placeholder=" " >
+                      <label for="cidade">Cidade:</label>
+                    </div>
+          
+                    <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="estado" name="estado" placeholder=" " >
+                      <label for="estado">UF:</label>
+                    </div>
+                    <div class="form-floating col-sm-12 pl-1 pr-1 mt-1">
+                      <textarea class="form-control" placeholder=" " id="observacao"></textarea>
+                      <label for="observacao">Observações</label>
                     </div>
 
-                    <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="estado_fornecedor" name="estado_fornecedor" placeholder=" " required>
-                      <label for="estado_fornecedor">UF:</label>
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1">
+                      <input class="form-control" id="contato" placeholder=" " aria-label="contato">
+                      <label for="contato">Contato</label>
                     </div>
-                    <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
-                      <input class="form-control" id="telefone_fornecedor" placeholder=" " aria-label="telefone_fornecedor">
-                      <label for="telefone_fornecedor">Telefone</label>
+
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1">
+                      <select class="form-select" id="tipo_contato" aria-label="tipo_de_contato">
+                        <option value="0">Selecione</option>
+                        <option value="1">Telefone</option>
+                        <option value="2">E-mail</option>
+                        <option value="3">Whatsapp</option>
+                        <option value="4">Telegram</option>
+                        <option value="5">Outros</option>
+                      </select>
+                      <label for="tipo_contato">Tipo de Contatos</label>
                     </div>
-                    <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
-                      <input class="form-control" id="nome_contato_fornecedor" placeholder=" " aria-label="nome_contato_fornecedor">
-                      <label for="nome_contato_fornecedor">Nome Contato</label>
+                    
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1">
+                      <input class="form-control" id="nome_contato" placeholder=" " aria-label="nome_contato">
+                      <label for="nome_contato">Nome Contato</label>
                     </div>
-                    <div class="form-floating input-group col-sm-2 pl-0 pr-0 mt-1">
-                      <button class="btn btn-outline-primary">+ Contato</button>
+
+                    <div class="form-floating input-group col-sm-3 pl-0 pr-0 mt-1 text-end">
+                      <button class="btn btn-outline-primary" id="btn_add_contato">+ Contato</button>
                     </div>
+                  
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="card">
@@ -269,11 +295,11 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar</button>
-                <button type="button" class="btn btn-outline-primary">Salvar</button>
+                <button type="button" class="btn btn-outline-primary" id="btn_save_fornecedores">Salvar</button>
               </div>
             </div>
           </div>
-        </div>
+          </div>
       </div>
     </div>
   </div>
@@ -293,11 +319,16 @@
   <script src="../static/js/meuJs/modal_categoria.js"></script>
   <script src="../static/js/meuJs/modal_tamanhos.js"></script>,
   <script src="../static/js/meuJs/modal_alegernos.js"></script>
+  <script src="../static/js/meuJs/modal_fornecedores.js"></script>
+  <script src="../static/js/meuJs/fornecedores/fornecedores.js"></script>
+  <script src="../static/js/meuJs/utils/form_to_dicionario.js"></script>
+  <script src="../static/js/meuJs/utils/conexao.js"></script>
+
   <script src="../static/js/meuJs/imagem.js"></script>
+  
   <script src="../static/js/cadastros/component/categorias.js"></script>
   <script src="../static/js/cadastros/teste.js"></script>
   <script src="../static/js/main.js"></script>
-  <!-- <script src="../static/js/conexao.js"></script> -->
 </body>
 
 </html>

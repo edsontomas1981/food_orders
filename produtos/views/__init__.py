@@ -23,4 +23,5 @@ from .fornecedores.read_fornecedores import read_fornecedor
 from .fornecedores.update_fornecedores import update_fornecedor
 from .fornecedores.delete_fornecedores import delete_fornecedor
 
+from .csrf_token.get_csrf_token import get_csrf_token
 

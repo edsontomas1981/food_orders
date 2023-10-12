@@ -28,5 +28,7 @@ urlpatterns = [
     path('fornecedor/create/',views.create_fornecedor,name='create_fornecedor'),
     path('fornecedor/read/',views.read_fornecedor,name='read_fornecedor'),
     path('fornecedor/update/',views.update_fornecedor,name='update_fornecedor'),
-    path('fornecedor/delete/',views.delete_fornecedor,name='delete_fornecedor'),    
+    path('fornecedor/delete/',views.delete_fornecedor,name='delete_fornecedor'),  
+ 
+    path('api/get_csrf_token/', views.get_csrf_token, name='get_csrf_token'),
 ]
