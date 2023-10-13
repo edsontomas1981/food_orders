@@ -9,7 +9,7 @@ class Fornecedor():
             self.obj_fornecedor = Mdl_fornecedores(
                 cnpj_fornecedor=dados['cnpj'],
                 raz_soc_fornecedor=dados['raz_soc_fornecedor'],
-                contato_fk=dados['contato_fk'],
+                # contato_fk=dados['contato_fk'],
                 endereco_fk=dados['endereco_fk']
             )
             self.obj_fornecedor.save()
@@ -25,16 +25,14 @@ class Fornecedor():
             return None
 
     def update_fornecedor(self, fornecedor_id, dados):
-    # try:
-        self.obj_fornecedor = Mdl_fornecedores.objects.get(id=fornecedor_id)
-        self.obj_fornecedor.cnpj_fornecedor = dados['cnpj_fornecedor']
-        self.obj_fornecedor.raz_soc_fornecedor = dados['raz_soc_fornecedor']
-        self.obj_fornecedor.contato_fk = dados['contato_fk']
-        self.obj_fornecedor.endereco_fk = dados['endereco_fk']
-        self.obj_fornecedor.save()
-        return 200
-    # except Mdl_fornecedores.DoesNotExist:
-    #     return 400, None
+        try:
+            self.obj_fornecedor = Mdl_fornecedores.objects.get(id=fornecedor_id)
+            self.obj_fornecedor.cnpj_fornecedor = dados['cnpj']
+            self.obj_fornecedor.raz_soc_fornecedor = dados['raz_soc_fornecedor']
+            self.obj_fornecedor.save()
+            return 200
+        except Mdl_fornecedores.DoesNotExist:
+            return 400, None
 
     def delete_fornecedor(self, fornecedor_id):
         try:

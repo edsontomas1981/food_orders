@@ -11,5 +11,19 @@ class Endereco(models.Model):
 
     observacao= models.CharField(max_length=100)
 
+    def to_dict(self):
+        endereco_dict = {
+            'id':self.id,
+            'cep': self.cep,
+            'logradouro': self.logradouro,
+            'numero': self.numero,
+            'complemento': self.complemento,
+            'bairro': self.bairro,
+            'cidade': self.cidade,
+            'estado': self.estado,
+            'observacao': self.observacao,
+        }
+        return endereco_dict
+
 
 

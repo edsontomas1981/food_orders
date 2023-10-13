@@ -10,3 +10,18 @@ class Fornecedor(models.Model):
 
     def __str__(self):
         return self.raz_soc_fornecedor
+
+    def to_dict(self):
+        fornecedor_dict = {
+            'id':self.id,
+            'cnpj_fornecedor': self.cnpj_fornecedor,
+            'raz_soc_fornecedor': self.raz_soc_fornecedor,
+        }
+
+        if self.contato_fk:
+            fornecedor_dict['contato'] = self.contato_fk.to_dict()
+
+        if self.endereco_fk:
+            fornecedor_dict['endereco'] = self.endereco_fk.to_dict()
+
+        return fornecedor_dict

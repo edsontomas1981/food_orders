@@ -49,7 +49,7 @@ class FornecedorTest(TestCase):
         status = fornecedor.create_fornecedor(dados_originais)
 
         dados_atualizados  = {
-            "cnpj_fornecedor":"55555555555555",
+            "cnpj":"55555555555555",
             "raz_soc_fornecedor":"Fornecedor Atualizado",
             "contato_fk":self.contato,
             "endereco_fk":self.endereco
