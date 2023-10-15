@@ -26,7 +26,7 @@ urlpatterns = [
     path('tamanho/delete/',views.delete_tamanho,name='delete_tamanho'),
 
     path('fornecedor/create/',views.create_fornecedor,name='create_fornecedor'),
-    path('fornecedor/read/',views.read_fornecedor,name='read_fornecedor'),
+    path('fornecedor/read/',views.read_fornecedor_cnpj,name='read_fornecedor'),
     path('fornecedor/update/',views.update_fornecedor,name='update_fornecedor'),
     path('fornecedor/delete/',views.delete_fornecedor,name='delete_fornecedor'),  
  

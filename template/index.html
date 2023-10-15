@@ -182,35 +182,35 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Cadastro Fornecedores</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" id="fecha_modal_fornecedores" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <form id="form_fornecedores">
                   <div class="row">
-                    <input type="text" id="fornecedor_id">
+                    <input type="hidden" id="fornecedor_id">
                     <div class="form-floating col-sm-6 pl-1 pr-1 ">
                         <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder=" ">
                         <label for="cnpj">CPF/CNPJ:</label>
                     </div>
                     <div class="form-floating col-sm-6 pl-1 pr-1 ">
-                      <input type="text" class="form-control" id="raz_soc_fornecedor" name="raz_soc_fornecedor" placeholder=" " >
+                      <input type="text" class="form-control" id="raz_soc_fornecedor" name="raz_soc_fornecedor" placeholder=" " required>
                       <label for="raz_soc_fornecedor">Nome/Razão Social:</label>
                     </div>
           
                     <div class="form-floating col-sm-3 pl-1 pr-1 mt-1 ">
-                      <input type="text" class="form-control" id="cep" name="cep" placeholder=" " >
+                      <input type="text" class="form-control" id="cep" name="cep" placeholder=" " required>
                       <label for="cep">Cep:</label>
                     </div>
           
                     <div class="form-floating col-sm-4 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder=" " >
+                      <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder=" " required>
                       <label for="logradouro">Endereço:</label>
                     </div>                    
           
                     <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="numero" name="numero" placeholder=" " >
+                      <input type="text" class="form-control" id="numero" name="numero" placeholder=" " required>
                       <label for="numero">Número:</label>
                     </div>   
                               
@@ -220,11 +220,11 @@
                     </div>
 
                     <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="bairro" name="bairro" placeholder=" " >
+                      <input type="text" class="form-control" id="bairro" name="bairro" placeholder=" " required>
                       <label for="bairro">Bairro:</label>
                     </div> 
                     <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
-                      <input type="text" class="form-control" id="cidade" name="cidade" placeholder=" " >
+                      <input type="text" class="form-control" id="cidade" name="cidade" placeholder=" " required>
                       <label for="cidade">Cidade:</label>
                     </div>
           
@@ -295,7 +295,7 @@
               </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar</button>
+                <button type="button" class="btn btn-danger" id="descartar" data-dismiss="modal">Descartar</button>
                 <button type="button" class="btn btn-outline-primary" id="btn_save_fornecedores">Salvar</button>
               </div>
             </div>
@@ -322,14 +322,25 @@
   <script src="../static/js/meuJs/modal_alegernos.js"></script>
   <script src="../static/js/meuJs/modal_fornecedores.js"></script>
   <script src="../static/js/meuJs/fornecedores/fornecedores.js"></script>
+  <script src="../static/js/meuJs/fornecedores/input_cep.js"></script>
+  <script src="../static/js/meuJs/fornecedores/txt_cnpj_cpf.js"></script>
+  <script src="../static/js/meuJs/fornecedores/input_nome_razao.js"></script>
+  <script src="../static/js/meuJs/fornecedores/modal_fornecedores.js"></script>
+
+
+  <script src="../static/js/meuJs/utils/valida_cnpj_cpf.js"></script>
+  <script src="../static/js/meuJs/utils/busca_cep.js"></script>
+  <script src="../static/js/meuJs/utils/valida_cep.js"></script>
+  <script src="../static/js/meuJs/utils/limpa_form.js"></script>
+
   <script src="../static/js/meuJs/utils/form_to_dicionario.js"></script>
+  <script src="../static/js/meuJs/utils/alertas.js"></script>
   <script src="../static/js/meuJs/utils/conexao.js"></script>
 
   <script src="../static/js/meuJs/imagem.js"></script>
   
   <script src="../static/js/cadastros/component/categorias.js"></script>
   <script src="../static/js/cadastros/teste.js"></script>
-  <script src="../static/js/main.js"></script>
 </body>
 
 </html>

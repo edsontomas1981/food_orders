@@ -1,4 +1,5 @@
 from produtos.models.fornecedores import Fornecedor as Mdl_fornecedores
+from endereco.controller.endereco import EnderecoCRUD
 
 class Fornecedor():
     def __init__(self):
@@ -29,6 +30,8 @@ class Fornecedor():
             self.obj_fornecedor = Mdl_fornecedores.objects.get(id=fornecedor_id)
             self.obj_fornecedor.cnpj_fornecedor = dados['cnpj']
             self.obj_fornecedor.raz_soc_fornecedor = dados['raz_soc_fornecedor']
+            endereco=EnderecoCRUD()
+            endereco.update_endereco(self.obj_fornecedor.endereco_fk.id,dados)
             self.obj_fornecedor.save()
             return 200
         except Mdl_fornecedores.DoesNotExist:
@@ -41,3 +44,10 @@ class Fornecedor():
             return 200, fornecedor.id
         except Mdl_fornecedores.DoesNotExist:
             return 400, None
+
+    def read_fornecedor_cnpj(self, cnpj_request):
+        try:
+            self.obj_fornecedor = Mdl_fornecedores.objects.get(cnpj_fornecedor=cnpj_request)
+            return 200
+        except Mdl_fornecedores.DoesNotExist:
+            return None

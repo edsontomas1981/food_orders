@@ -1,0 +1,5 @@
+.campo-erro {
+    border: 1px solid #ff0000; /* Cor vermelha */
+    background-color: #ffeeee; /* Cor de fundo de destaque */
+    color: #ff0000; /* Cor do texto vermelho (opcional) */
+  }

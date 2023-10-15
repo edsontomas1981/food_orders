@@ -19,7 +19,7 @@ from .produtos.read_produtos import read_produto
 from .produtos.update_produtos import update_produto
 
 from .fornecedores.create_fornecedores import create_fornecedor
-from .fornecedores.read_fornecedores import read_fornecedor
+from .fornecedores.read_fornecedores import read_fornecedor_cnpj
 from .fornecedores.update_fornecedores import update_fornecedor
 from .fornecedores.delete_fornecedores import delete_fornecedor
 
