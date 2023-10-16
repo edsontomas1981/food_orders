@@ -1,4 +1,4 @@
-let btn_teste = document.getElementById("teste");
+let btn_teste = document.getElementById("teste"); 
 
 btn_teste.addEventListener("click", async ()=> {
     alert("Olá mundo!")
@@ -9,4 +9,4 @@ btn_teste.addEventListener("click", async ()=> {
 
     console.log(result)
     }
-    );
+);
