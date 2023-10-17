@@ -14,7 +14,7 @@ inpt_cnpj_cpf.addEventListener("blur", async () => {
 })
 
 const busca_cnpj_fornecedor = async () => {
-    let form = formToDictionary('form_fornecedores');
+    let form = form_to_dicionario('form_fornecedores');
     let url = '/produtos/fornecedor/read/';
     let conexao = new Conn(url, form);
     let response = await conexao.sendPostRequest()

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
         remover_classes('campo-erro',lista_campos)
        
         if (fornecedor_id.value == ""){
-            let form = formToDictionary('form_fornecedores');
+            let form = form_to_dicionario('form_fornecedores');
             let url = '/produtos/fornecedor/create/';
             let conexao = new Conn(url, form);
             const response = await conexao.sendPostRequest()
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async ()=> {
                 msgOK("Feito !")
             }
         }else{
-            let form = formToDictionary('form_fornecedores');
+            let form = form_to_dicionario('form_fornecedores');
             let url = '/produtos/fornecedor/update/';
             let conexao = new Conn(url, form);
             const response = await conexao.sendPostRequest()

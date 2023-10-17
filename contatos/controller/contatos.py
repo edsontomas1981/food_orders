@@ -8,6 +8,7 @@ class Contatos():
     def criar_contato(self, dados):
         try:
             self.obj_contato.contato = dados['contato']
+            self.obj_contato.fornecedor_fk = dados['fornecedor_fk']
             self.obj_contato.nome_contato = dados['nome_contato']
             self.obj_contato.tipo_contato = dados['tipo_contato']
             self.obj_contato.save()

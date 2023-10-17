@@ -10,7 +10,6 @@ class Fornecedor():
             self.obj_fornecedor = Mdl_fornecedores(
                 cnpj_fornecedor=dados['cnpj'],
                 raz_soc_fornecedor=dados['raz_soc_fornecedor'],
-                # contato_fk=dados['contato_fk'],
                 endereco_fk=dados['endereco_fk']
             )
             self.obj_fornecedor.save()

@@ -1,4 +1,4 @@
-const formToDictionary=(formId)=> {
+const form_to_dicionario=(formId)=> {
     const form = document.getElementById(formId);
     const formData = {};
   
