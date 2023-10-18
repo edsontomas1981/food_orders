@@ -6,6 +6,7 @@ inpt_cnpj_cpf.addEventListener("blur", async () => {
         response = await busca_cnpj_fornecedor()
         popula_fornecedor(response)
         inpt_cnpj_cpf.classList.remove('campo-erro');
+        
     } else {
         inpt_cnpj_cpf.value = ""
         inpt_cnpj_cpf.classList.add('campo-erro');

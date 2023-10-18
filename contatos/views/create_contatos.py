@@ -21,9 +21,9 @@ def create_contatos(request):
                 contato = Contatos()
                 contato.criar_contato(data)
 
-                print(contato.obj_contato.to_dict())
+                lista_contato = contato.listar_contatos_do_fornecedor(fornecedor.obj_fornecedor.id)
 
-                return JsonResponse({'fornecedor': contato.obj_contato.to_dict()}, status=200)
+                return JsonResponse({'fornecedor': contato.obj_contato.to_dict(),'lista_contatos':lista_contato}, status=200)
             else:
                 return JsonResponse({'status':400,'error': campos_vazios}, status=200)
         except json.JSONDecodeError:

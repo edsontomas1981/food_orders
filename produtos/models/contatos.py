@@ -13,7 +13,7 @@ class Contato(models.Model):
     def to_dict(self):
         contato_dict = {
             'id': self.id,
-            'fornecedor_fk': self.fornecedor_fk.id,
+            # 'fornecedor_fk': self.fornecedor_fk.id,
             'tipo_contato': self.tipo_contato,
             'nome_contato': self.nome_contato,
             'contato': self.contato,

@@ -6,9 +6,5 @@ btn_add_contatos.addEventListener('click',async ()=>{
     dados.id_proprietario = document.getElementById('fornecedor_id').value
     let conexao = new Conn(url,dados)
     let response = await conexao.sendPostRequest()
-    console.log(response)
-    
-    
-    // console.log(dados);
-    msgOK('Contato adicionado com sucesso!')
+    popula_tabela_contatos(response)
 })

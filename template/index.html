@@ -287,22 +287,17 @@
                     <div class="card">
                       <div class="card-body">
                         <div class="table-responsive">
-                          <table class="table center-aligned-table">
+                          <table class="table center-aligned-table" id="tabela_contato">
                             <thead>
                               <tr class="text-primary">
                                 <th>Número</th>
+                                <th>Tipo contato</th>
                                 <th>Nome contato</th>
                                 <th></th>
                                 <th></th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr class="">
-                                <td>11-96926-2277</td>
-                                <td>Edson Tomas</td>
-                                <td><a href="#" class="btn btn-primary btn-sm">Alterar</a></td>
-                                <td><a href="#" class="btn btn-danger btn-sm">Remover</a></td>
-                              </tr>
+                            <tbody id="row_contatos">
                             </tbody>
                           </table>
                         </div>
@@ -310,10 +305,6 @@
                     </div>
                   </div>
                 </div>                  
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -332,6 +323,13 @@
   <script src="../static/js/misc.js"></script>
   <script src="../static/js/chart.js"></script>
   <script src="../static/js/maps.js"></script>
+
+  <script src="../static/js/meuJs/utils/valida_cnpj_cpf.js"></script>
+  <script src="../static/js/meuJs/utils/busca_cep.js"></script>
+  <script src="../static/js/meuJs/utils/valida_cep.js"></script>
+  <script src="../static/js/meuJs/utils/limpa_form.js"></script>
+  <script src="../static/js/meuJs/utils/mascara_telefone.js"></script>
+  <script src="../static/js/meuJs/utils/pega_click_tabela.js"></script>
 
   <script src="../static/js/meuJs/carrega_navbar.js"></script>
   <script src="../static/js/meuJs/carrega_sidebar.js"></script>
@@ -354,13 +352,6 @@
   <script src="../static/js/meuJs/contatos/inpt_contato.js"></script>
   <script src="../static/js/meuJs/contatos/add_contatos.js"></script>
   <script src="../static/js/meuJs/contatos/table_contatos.js"></script>
-
-
-  <script src="../static/js/meuJs/utils/valida_cnpj_cpf.js"></script>
-  <script src="../static/js/meuJs/utils/busca_cep.js"></script>
-  <script src="../static/js/meuJs/utils/valida_cep.js"></script>
-  <script src="../static/js/meuJs/utils/limpa_form.js"></script>
-  <script src="../static/js/meuJs/utils/mascara_telefone.js"></script>
 
   <script src="../static/js/meuJs/utils/form_to_dicionario.js"></script>
   <script src="../static/js/meuJs/utils/alertas.js"></script>

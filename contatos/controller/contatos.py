@@ -60,3 +60,14 @@ class Contatos():
         except Exception as e:
             # Lidar com outras exceções aqui (por exemplo, registrar o erro)
             return None  # Retornar um valor adequado em caso de erro
+        
+    def listar_contatos_do_fornecedor(self, fornecedor_id):
+
+        try:
+            contatos = Mdl_contato.objects.filter(fornecedor_fk=fornecedor_id)
+            lista_contatos = [contato.to_dict() for contato in contatos]
+            return lista_contatos
+
+        except Exception as e:
+            # Lidar com a exceção aqui (por exemplo, registrar o erro)
+            return None  # Retornar um valor adequado em caso de erro

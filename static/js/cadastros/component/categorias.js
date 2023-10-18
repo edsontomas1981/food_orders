@@ -102,14 +102,14 @@ $(modal).on('shown.bs.modal', function () {
 
 // carregaTabelaCategorias()
 
-// Adicione um evento de clique aos botões "Apagar"
-const botoesApagar = tabela_categorias.querySelectorAll('.btn-outline-danger');
-botoesApagar.forEach(botao => {
-  botao.addEventListener('click', (e) => {
-    const idCategoria = e.target.getAttribute('data-id');
-    deletaCategoria(idCategoria);
-  });
-});
+// // Adicione um evento de clique aos botões "Apagar"
+// const botoesApagar = tabela_categorias.querySelectorAll('.btn-outline-danger');
+// botoesApagar.forEach(botao => {
+//   botao.addEventListener('click', (e) => {
+//     const idCategoria = e.target.getAttribute('data-id');
+//     deletaCategoria(idCategoria);
+//   });
+// });
 
 const carrega_cmb_categorias = async()=>{
   let cmb_categorias = document.getElementById("cmb_categorias")
