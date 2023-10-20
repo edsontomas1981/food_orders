@@ -54,7 +54,8 @@ class Contatos():
 
     def obter_contato(self, contato_id):
         try:
-            return Mdl_contato.objects.get(pk=contato_id)
+            self.obj_contato = Mdl_contato.objects.get(pk=contato_id)
+            return self.obj_contato
         except ObjectDoesNotExist:
             return None  # Retornar um valor adequado se o objeto não for encontrado
         except Exception as e:

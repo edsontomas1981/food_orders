@@ -2,7 +2,6 @@ const inpt_contato = document.getElementById('contato');
 
 inpt_contato.addEventListener('input', (event) => {
     const selectedOption = select_tipo_contato.value;
-    console.log(selectedOption)
     if (selectedOption === "Telefone" || selectedOption === "Whatsapp" || selectedOption === "Telegram") {
         let telefone = event.target.value.replace(/\D+/g, "");
         let tamanho = telefone.length;

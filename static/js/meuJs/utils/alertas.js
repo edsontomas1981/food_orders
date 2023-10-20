@@ -35,3 +35,25 @@ const msgErro = (msg) => {
         title: msg
     });
 }
+
+
+const msgYesNo = () => {
+    return new Promise((resolve, reject) => {
+      Swal.fire({
+        title: 'Você tem certeza?',
+        text: 'Essa ação não pode ser desfeita!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          resolve(1);
+        } else {
+          resolve(0);
+        }
+      });
+    });
+  }
