@@ -44,7 +44,6 @@ const remover_classes = (classe,lista_campos_obrigatorios)=>{
 }
 
 const popula_fornecedor = (response) =>{
-    console.log(response)
     document.getElementById("cnpj").value = response.fornecedor.cnpj_fornecedor
     document.getElementById("raz_soc_fornecedor").value = response.fornecedor.raz_soc_fornecedor
     document.getElementById('cep').value = response.fornecedor.endereco.cep

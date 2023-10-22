@@ -13,7 +13,7 @@ const msgOK=(msg)=>{
 
     Toast.fire({
         icon: 'success',
-        title: msg
+        title: msg +  '  🎉'
     })
 }
 

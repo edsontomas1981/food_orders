@@ -2,7 +2,7 @@ const popula_tabela_contatos = (response) =>{
     // Obtém a referência ao elemento tbody da tabela
     var tbody = document.getElementById("row_contatos");
 
-    tbody.innerHTML = "";
+    limpa_tabelas("row_contatos")
 
     response.lista_contatos.forEach(element => {
         var tr = document.createElement("tr");

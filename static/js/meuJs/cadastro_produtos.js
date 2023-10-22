@@ -30,9 +30,9 @@ modal_cad_produto.innerHTML = `
                     <label for="fornecedor_cnpj">CNPJ/CPF</label>
                 </div> 
                 <div class="form-floating input-group mb-3 col-sm-6 pl-1">
-                    <input class="form-control" id="fornecedor_raz_soc" placeholder=" " aria-label="fornecedor_raz_soc">
+                    <input class="form-control" id="fornecedor_raz_soc"  placeholder=" " aria-label="fornecedor_raz_soc">
                     <label for="fornecedor_raz_soc">Fornecedor</label>
-                    <button class="btn btn-outline-primary mr-2" type="button">+ Fornecedor</button>
+                    <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#modal_cadastro_fornecedores"  type="button">+ Fornecedor</button>
                 </div>
                 <div class="form-floating mb-3 col-sm-4 pl-1 ">
                     <input type="text" class="form-control" id="nome_produto" placeholder="Nome do produto">

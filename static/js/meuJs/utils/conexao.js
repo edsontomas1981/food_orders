@@ -26,13 +26,13 @@ class Conn {
     
 
     async sendPostRequest() {
-        const csrf_token = await this.getCSRFToken();
+        // const csrf_token = await this.getCSRFToken();
         try {
             const response = await fetch(this.url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRFToken": csrf_token, // Usa o token CSRF obtido
+                    // "X-CSRFToken": csrf_token, // Usa o token CSRF obtido
                 },
                 body: JSON.stringify(this.data),
             });

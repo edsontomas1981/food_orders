@@ -24,6 +24,19 @@ modal_categoria.innerHTML = `
                         <table class="table" id="tabela_categorias">
                         </table>
                     </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">id</th>
+                          <th scope="col">Categorias</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbody_categorias">
+
+                      </tbody>
+                    </table>
+
                 </form>
             </div>
         </div>

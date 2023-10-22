@@ -26,6 +26,17 @@ modal_tamanhos.innerHTML = `
                     </div>
                 </form>
             </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">id</th>
+                  <th scope="col">Tamanhos</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id="tbody_tamanhos">
+              </tbody>
+            </table>
         </div>
       </div>
       <div class="modal-footer">
