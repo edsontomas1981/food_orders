@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from produtos.controller.tamanho import Tamanho
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def read_tamanho(request):
     if request.method == 'POST':
         tamanho = Tamanho()

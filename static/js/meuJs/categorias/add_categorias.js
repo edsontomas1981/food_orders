@@ -12,7 +12,7 @@ criaCategoria.addEventListener('click', async (e) => {
         if (result.status == 200){
           popula_tbody('tbody_categorias',result.categorias,false,add_botao_remover)
           msgOK("Categoria cadastrada com sucesso!")
-          popula_cmb_categorias('cmb_categorias',result.categorias)
+          popula_cmb('cmb_categorias',result.categorias)
 
 
         }

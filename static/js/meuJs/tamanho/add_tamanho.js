@@ -10,9 +10,9 @@ criar_tamanho.addEventListener('click',async()=>{
         let conexao = new Conn(url, dados)
         let result = await conexao.sendPostRequest()
         if (result.status == 200){
-        //   popula_tbody('tbody_categorias',result.categorias,false,add_botao_remover)
-        //   msgOK("Categoria cadastrada com sucesso!")
-        //   popula_cmb_categorias('cmb_categorias',result.categorias)
+          popula_tbody('tbody_tamanhos',result.tamanhos,false,add_botao_remover_tamanho)
+          msgOK("Tamanho criado com sucesso!")
+          popula_cmb('cmb_tamanho',result.tamanhos)
         }
     } catch (error) {
         console.error('Ocorreu um erro:', error);

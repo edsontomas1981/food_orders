@@ -54,14 +54,14 @@ modal_cad_produto.innerHTML = `
                     <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#cadastro_categoria" type="button">+ Categoria</button>
                 </div>
                 <div class="form-floating input-group mb-3 col-sm-4 pl-1">
-                    <select class="form-select" id="cmb_tamanho" aria-label="cmb_tamanho" placeholder="Categoria">
+                    <select class="form-select" id="cmb_tamanho" aria-label="cmb_tamanho" placeholder=" ">
                         <option selected>Tamanho</option>
                     </select>
                     <label for="cmb_tamanho">Tamanho</label>
                     <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#cadastro_tamanho"  type="button">+ Tamanho</button>
                 </div>   
                 <div class="form-floating input-group mb-3 col-sm-4 pl-1">
-                    <select class="form-select" id="cmb_alergenos"aria-label="cmb_alergenos" placeholder="Categoria">
+                    <select class="form-select" id="cmb_alergenos"aria-label="cmb_alergenos" placeholder=" ">
                         <option selected>Alérgenos</option>
                     </select>
                     <label for="cmb_alergenos">Alérgenos</label>

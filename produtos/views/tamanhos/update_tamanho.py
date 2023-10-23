@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from produtos.controller.tamanho import Tamanho
 import json
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def update_tamanho(request):
     if request.method == 'POST':
         try:

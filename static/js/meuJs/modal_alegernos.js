@@ -25,6 +25,17 @@ modal_alergenos.innerHTML = `
                         </table>
                     </div>
                 </form>
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Tamanhos</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="tbody_alergenos">
+                </tbody>
+              </table>
             </div>
         </div>
       </div>

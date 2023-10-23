@@ -1,4 +1,4 @@
-const popula_cmb_categorias = async (id_elemento,lista_opcoes)=>{
+const popula_cmb = async (id_elemento,lista_opcoes)=>{
     // Obtém o elemento select pelo ID (ou pode ser passado diretamente como argumento)
     const select = document.getElementById(id_elemento);
 

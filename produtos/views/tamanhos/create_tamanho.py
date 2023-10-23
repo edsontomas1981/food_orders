@@ -1,14 +1,15 @@
-from django.http import JsonResponse
-from produtos.controller.tamanho import Tamanho
-import json
 from django.views.decorators.csrf import csrf_exempt
+from produtos.controller.tamanho import Tamanho
+from django.http import JsonResponse
+import json
 
 @csrf_exempt
 def create_tamanho(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
-            tamanho_nome = data.get('tamanhoNome')
+            tamanho_nome = data.get('item')
+            print (data)
 
             if tamanho_nome:
                 tamanho = Tamanho()

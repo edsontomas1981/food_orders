@@ -1,7 +1,9 @@
 from django.http import JsonResponse
 from produtos.controller.alergenos import Alergenos
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def read_alergeno(request):
     if request.method == 'POST':
         alergeno = Alergenos()
