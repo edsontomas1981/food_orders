@@ -11,7 +11,6 @@ const add_botao_remover=(id)=> {
 const deleta_categoria = async (id)=>{
     try {
         let deseja_continuar = await msgYesNo()
-        console.log(deseja_continuar)
         switch (deseja_continuar) {
             case 1:
                 let url = '/produtos/categorias/delete/'
@@ -20,7 +19,7 @@ const deleta_categoria = async (id)=>{
                 let result = await conn.sendPostRequest()
                 if (result.status == 200){
                     popula_tbody('tbody_categorias',result.categorias,false,add_botao_remover)                
-                    popula_cmb_categorias('cmb_categorias',result.categorias)
+                    popula_cmb('cmb_categorias',result.categorias)
                     msgOK('Feito !')
                 }
                 break;

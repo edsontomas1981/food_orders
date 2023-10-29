@@ -4,7 +4,6 @@ const add_botao_remover_alergeno = (id)=>{
 
 document.addEventListener('DOMContentLoaded',async()=>{
     let result = await carregaTabelaAlergenos()
-    console.log(result)
     popula_tbody('tbody_alergenos',result.alergenos,false,add_botao_remover_alergeno)
     popula_cmb('cmb_alergenos',result.alergenos)
 

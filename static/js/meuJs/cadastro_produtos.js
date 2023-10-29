@@ -1,7 +1,7 @@
 let modal_cad_produto  = document.getElementById("template_modal")
 modal_cad_produto.innerHTML = `        
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_cadastro_produtos">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade modal-xxl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="modal_cadastro_produtos" data-backdrop="static">
+  <div class="modal-dialog modal-lg  modal-dialog-scrollable">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Cadastro de Produtos</h5>
@@ -11,13 +11,17 @@ modal_cad_produto.innerHTML = `
         </div>
         <div class="modal-body">
             <div class="row">
-                <div class="form-floating mb-3 col-sm-4 pl-1" >
+                <div class="form-floating mb-3 col-sm-3 pl-1" >
                     <input type="text" class="form-control" id="id_produto" placeholder="Id Produto" disabled>
                     <label for="preco">Id Produto</label>
                 </div>            
-                <div class="form-floating mb-2 col-sm-4 pl-1 ">
+                <div class="form-floating mb-2 col-sm-3 pl-1 ">
                     <input type="text" class="form-control" id="cod_barras" placeholder="Código de Barras">
                     <label for="cod_barras">Código de Barras</label>
+                </div>
+                <div class="form-floating col-sm-3 pl-1">
+                    <input type="text" class="form-control" id="estoque" placeholder="Qtde Estoque">
+                    <label for="estoque">Qtde Estoque</label>
                 </div>
                 <div class="form-check col-sm-2">
                     <label>
@@ -25,68 +29,100 @@ modal_cad_produto.innerHTML = `
                     Disponível
                     <i class="input-helper"></i></label>
                 </div>
-                <div class="form-floating col-sm-6 pl-1">
+                <div class="form-floating col-sm-4 pl-1 pr-1">
                     <input class="form-control" id="fornecedor_cnpj" aria-label="fornecedores" placeholder="CNPJ/CPF">
                     <label for="fornecedor_cnpj">CNPJ/CPF</label>
                 </div> 
-                <div class="form-floating input-group mb-3 col-sm-6 pl-1">
-                    <input class="form-control" id="fornecedor_raz_soc"  placeholder=" " aria-label="fornecedor_raz_soc">
-                    <label for="fornecedor_raz_soc">Fornecedor</label>
-                    <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#modal_cadastro_fornecedores"  type="button">+ Fornecedor</button>
+                <div class="form-floating mb-3 col-sm-4 pl-1 " id="modal_cadastra_fornecedores">
+                    <input class="form-control" id="fornecedor_raz_soc" aria-label="fornecedores" placeholder="CNPJ/CPF">
+                    <label for="fornecedor_raz_soc">Nome/Razão Social</label>
                 </div>
-                <div class="form-floating mb-3 col-sm-4 pl-1 ">
+
+                <div class="form-floating input-group mb-3 col-sm-4 pl-0 pr-1">
+                    <input class="form-control" id="imagem" placeholder="Imagem" readonly>
+                    <label for="imagem"></label>
+                    <button class="btn btn-outline-primary mr-2" type="button" onclick="selecionarImagem()">+ Imagem</button>
+                </div>
+                <input type="file" id="inputImagem" style="display: none;">
+
+                <div class="form-floating mb-3 col-sm-3 pl-1 " data-toggle="tooltip" title="Insira seu primeiro nome">
                     <input type="text" class="form-control" id="nome_produto" placeholder="Nome do produto">
                     <label for="nome_produto">Nome Produto</label>
                 </div>  
-                <div class="form-floating col-sm-4 pl-1 mb-2 mt-0">
+                <div class="form-floating col-sm-3 pl-1 mb-2 mt-0">
                     <textarea class="form-control" placeholder="Descrição do Produto" id="descricao_produto"></textarea>
                     <label for="descricao_produto">Descrição do Produto</label>
-                </div>               
-                <div class="form-floating mb-2 col-sm-4 pl-1 ">
+                </div>    
+
+                <div class="form-floating mb-2 col-sm-3 pl-1 ">
                     <input type="text" class="form-control" id="preco" placeholder="Preço">
                     <label for="preco">Preço R$</label>
                 </div>
-                
-                <div class="form-floating input-group mb-3 col-sm-4 pl-1">
+              
+                <div class="form-floating mb-3 col-sm-3 pl-1 pr-2" id="cadastro_categorias">
                     <select class="form-select" id="cmb_categorias" aria-label="cmb_categorias" placeholder="Categoria">
                     </select>
                     <label for="cmb_categorias">Categorias</label>
-                    <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#cadastro_categoria" type="button">+ Categoria</button>
                 </div>
-                <div class="form-floating input-group mb-3 col-sm-4 pl-1">
-                    <select class="form-select" id="cmb_tamanho" aria-label="cmb_tamanho" placeholder=" ">
-                        <option selected>Tamanho</option>
-                    </select>
-                    <label for="cmb_tamanho">Tamanho</label>
-                    <button class="btn btn-outline-primary mr-2" data-toggle="modal" data-target="#cadastro_tamanho"  type="button">+ Tamanho</button>
-                </div>   
-                <div class="form-floating input-group mb-3 col-sm-4 pl-1">
-                    <select class="form-select" id="cmb_alergenos"aria-label="cmb_alergenos" placeholder=" ">
-                        <option selected>Alérgenos</option>
-                    </select>
-                    <label for="cmb_alergenos">Alérgenos</label>
-                    <button class="btn btn-outline-primary mr-2"  data-toggle="modal" data-target="#cadastro_alergenos"  type="button">+ Alérgenos</button>
-                </div> 
-                <div class="form-floating input-group mb-3 col-sm-12 pl-1">
-                <input class="form-control" id="imagem" placeholder="Imagem" readonly>
-                <label for="imagem">Imagem</label>
-                <button class="btn btn-outline-primary mr-2" type="button" onclick="selecionarImagem()">+ Imagem</button>
-            </div>
-                <input type="file" id="inputImagem" style="display: none;">
 
-                <div class="form-floating mb-2 col-sm-3 pl-1 ">
+                <div class="pl-1 col-sm-6 pl-1 col-sm-6 pl-1" id="cadastra_tamanho">
+                    <div class="row  mb-3 mt-1 pr-1">
+                        <div class="col-sm-12 input-group">
+                            <select class="form-select" id="cmb_tamanho" aria-label="cmb_tamanho" placeholder=" ">
+                                <option selected>Tamanho</option>
+                            </select>
+                            <button class="btn btn-outline-primary mr-2" id="add_tamanho" type="button">+</button>
+                        </div>
+                        <div class="col-sm-12">
+                            <table class="table center-aligned-table" id="tabela_contato">
+                            <thead>
+                            <tr class="text-primary">
+                                <th>Id</th>
+                                <th>Tamanho</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="row_prod_tamanho">
+                            </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                </div> 
+
+                <div class="pr-3 col-sm-6 pl-1" id="cadastra_alergeno">
+                    <div class="row mb-3 mt-1 ">
+                        <div class="col-sm-12 input-group pr-1">
+                            <select class="form-select" id="cmb_alergenos" aria-label="cmb_alergenos" placeholder=" ">
+                                <option selected>Tamanho</option>
+                            </select>
+                            <button class="btn btn-outline-primary mr-2" id="add_alergeno" type="button">+</button>
+                        </div>
+                        <div class="col-sm-12 ">
+                            <table class="table center-aligned-table" id="tabela_contato">
+                            <thead>
+                            <tr class="text-primary">
+                                <th>Id</th>
+                                <th>Alergeno</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="row_prod_alergeno">
+                            </tbody>
+                            </table>
+                        </div>    
+                    </div>
+                </div>                 
+
+                <div class="form-floating mb-2 col-sm-4 pl-1 ">
                     <input type="text" class="form-control" id="tempo_preparo" placeholder="Tempo de preparo">
                     <label for="tempo_preparo">Tempo de preparo</label>
                 </div>
-                <div class="form-floating col-sm-3 pl-1">
-                    <input type="text" class="form-control" id="estoque" placeholder="Qtde Estoque">
-                    <label for="estoque">Qtde Estoque</label>
-                </div>
-                <div class="form-floating col-sm-3 pl-1">
+
+                <div class="form-floating col-sm-4 pl-1">
                     <input type="text" class="form-control" id="restricoes_dieteticas" placeholder="Restrições Dietéticas">
                     <label for="restricoes_dieteticas">Restrições Dietéticas</label>
                 </div>
-                <div class="form-floating col-sm-3 pl-1">
+                <div class="form-floating col-sm-4 pl-1">
                     <input type="text" class="form-control" id="sazonalidade" placeholder="Sazonalidade(Ex:Verão)">
                     <label for="sazonalidade">Sazonalidade(Ex:Verão)</label>
                 </div>
