@@ -1,18 +1,29 @@
-function removeItemFromDictionary(key,dicionario) {
-    // Recupere os dados do localStorage
-    let dictionaryStringFromStorage = localStorage.getItem(dicionario);
-    let arrayFromStorage = JSON.parse(dictionaryStringFromStorage);
+function removeItemAlergeno(idParaRemover) {
+    let alergenos = localStorage.getItem('alergenos');
 
-    // Encontre o índice do item no array com base na chave (key)
-    const indexToRemove = arrayFromStorage.findIndex(item => item.id === key);
+    if (alergenos) {
+        let items = JSON.parse(alergenos);
 
-    if (indexToRemove !== -1) {
-        // Remove o item do array utilizando o índice identificado
-        arrayFromStorage.splice(indexToRemove, 1);
+        const indexParaRemover = items.findIndex(item => item.id === idParaRemover);
 
-        // Atualiza os dados no localStorage
-        localStorage.setItem(dicionario, JSON.stringify(arrayFromStorage));
+        if (indexParaRemover !== -1) {
+            items.splice(indexParaRemover, 1);
+            localStorage.setItem('alergenos', JSON.stringify(items));
+            console.log(JSON.stringify(items))
+            console.log("Item removido com sucesso!");
+
+            // Atualizar o tbody APÓS a remoção do item no localStorage
+            popula_tbody('row_prod_alergeno', items, false, removeItemAlergeno);
+        } else {
+            console.log("Não foi encontrado nenhum item com o ID especificado.");
+        }
     } else {
-        console.log('Item não encontrado no dicionário.');
+        console.log("Não há dados armazenados para a chave 'alergenos'.");
     }
+}
+
+function removeItemTamanho(idParaRemover) {
+    array_tamanho = array_tamanho.filter(item => item.id !== idParaRemover);
+    popula_tbody('row_prod_tamanho', array_tamanho, false, removeItemTamanho);
+
 }

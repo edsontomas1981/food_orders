@@ -13,14 +13,14 @@ btn_add_tamanho.addEventListener('click', () => {
     if (!isValuePresent) {
         array_tamanho.push({'id': selectedValue, 'nome': selectedOption.textContent});
 
-        // Salvar a lista atualizada no localStorage
-        localStorage.setItem('tamanho', JSON.stringify(array_tamanho));
+        // // Salvar a lista atualizada no localStorage
+        // localStorage.setItem('tamanho', JSON.stringify(array_tamanho));
 
-        // Recuperar os dados do localStorage
-        let dictionaryStringFromStorage_tamanho = localStorage.getItem('tamanho');
-        let arrayFromStorage = JSON.parse(dictionaryStringFromStorage_tamanho);
+        // // Recuperar os dados do localStorage
+        // let dictionaryStringFromStorage_tamanho = localStorage.getItem('tamanho');
+        // let arrayFromStorage = JSON.parse(dictionaryStringFromStorage_tamanho);
 
         // Popula a tabela (presumo que a função popula_tbody faz isso)
-        popula_tbody('row_prod_tamanho', arrayFromStorage, false, true);
+        popula_tbody('row_prod_tamanho', array_tamanho, false, removeItemTamanho);
     }
 });
