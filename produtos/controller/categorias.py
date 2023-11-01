@@ -31,6 +31,13 @@ class Categoria():
             return 200,self.obj_categoria
         except Mdl_categoria.DoesNotExist:
             return None
+        
+    def read_categoria_id(self, id):
+        try:
+            self.obj_categoria = Mdl_categoria.objects.get(id=id)
+            return 200,self.obj_categoria
+        except Mdl_categoria.DoesNotExist:
+            return None        
 
     def delete_categoria(self, id):
         try:

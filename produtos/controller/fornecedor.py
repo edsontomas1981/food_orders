@@ -50,3 +50,5 @@ class Fornecedor():
             return 200
         except Mdl_fornecedores.DoesNotExist:
             return None
+
+    
