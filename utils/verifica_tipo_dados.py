@@ -1,25 +1,16 @@
-def verificar_numero(data):
-    if data:  # Verifica se o dado não está vazio
-        if isinstance(data, (int, float)):  # Verifica se é um número
-            if isinstance(data, float):  # Verifica se é um número float
-                if '.' in str(data):  # Verifica se o sinal decimal é ponto
-                    print("O número é um float com ponto como sinal decimal.")
-                elif ',' in str(data):  # Verifica se o sinal decimal é vírgula
-                    print("O número é um float com vírgula como sinal decimal.")
-                else:
-                    print("O número é um float, mas o sinal decimal não está claro.")
+def verificar_numero(data=0):
+    if isinstance(data, (int, float)):
+        return data
+    elif isinstance(data, str):
+        try:
+            if ',' in data and '.' in data:
+                # Remove os pontos de milhares e substitui a vírgula por um ponto para representar o decimal
+                data = data.replace('.', '').replace(',', '.')
+                return float(data)
             else:
-                print("O número é um inteiro.")
-        else:
-            try:
-                # Tenta converter a string para um número float
-                data = float(data.replace(',', '.'))  # Substitui ',' por '.' e converte para float
-                print(f"O número é um float com vírgula como sinal decimal: {data}")
-            except ValueError:
-                print("O dado inserido não é um número.")
+                # Verifica se a string tem um ponto como separador decimal e converte diretamente para float
+                return float(data.replace(',', '.'))
+        except ValueError:
+            return 0
     else:
-        print("O dado está vazio.")
-
-# Exemplo de uso da função com a string '3,14'
-verificar_numero('1.133,14')  # Verifica um número float
-
+        return 0

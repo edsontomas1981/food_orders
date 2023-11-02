@@ -12,6 +12,10 @@ btn_salvar_produto.addEventListener('click',async ()=>{
 
    let request = await conexao.sendPostRequest()
 
-   console.log(request)
+   if (request.campos_vazios){
+      request.campos_vazios.forEach(element => {
+         inserir_classe_campo_erro(element)
+      });
+   }
 
 })

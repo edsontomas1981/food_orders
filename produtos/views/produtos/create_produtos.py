@@ -10,27 +10,15 @@ def create_produto(request):
         try:
             data = json.loads(request.body.decode('utf-8'))
 
-            print(data)
-
             campos_obrigatorios = ['estoque','fornecedor_cnpj','nome','preco','categoria']
             campos_vazios = verifica_campos_obrigatorios(data,campos_obrigatorios)
 
-
-
-            print(campos_vazios)
-
-            produto = Produto()
-            produto.create_produto(data)
-
-            return JsonResponse({'status': 'Cadastro efetuado com sucesso'}, status=200)
-
-
-            # if produto_nome:
-            #     produto = Produto()
-            #     produto.create_produto(produto_nome)
-            #     return JsonResponse({'status': 'Cadastro efetuado com sucesso'}, status=200)
-            # else:
-            #     return JsonResponse({'error': 'O campo "produto" é obrigatório'}, status=400)
+            if len(campos_vazios)<=0:
+                produto = Produto()
+                produto.create_produto(data)
+                return JsonResponse({'status': 200,'produto':produto.obj_produto.to_dict()}, status=200)
+            else:
+                return JsonResponse({'error': 'O campos vazios','campos_vazios':campos_vazios})
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Dados JSON inválidos'}, status=400)
     else:

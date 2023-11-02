@@ -21,6 +21,12 @@ class Alergenos():
             return self.obj_alergenos
         except Mdl_alergenos.DoesNotExist:
             return None
+        
+    def read_alergenos_id(self,id):
+        try:
+            self.obj_alergenos = Mdl_alergenos.objects.get(id=id)
+        except Mdl_alergenos.DoesNotExist:
+            return None
 
     def update_alergeno(self, id, alergeno_nome):
         try:
@@ -38,3 +44,6 @@ class Alergenos():
             return 200, None
         except Mdl_alergenos.DoesNotExist:
             return 400, self.obj_alergenos.id
+
+
+

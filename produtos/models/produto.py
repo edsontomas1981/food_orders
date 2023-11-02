@@ -3,6 +3,10 @@ from produtos.models.categoria import Categoria
 from produtos.models.fornecedores import Fornecedor
 from produtos.models.alergenos import Alergenos
 from produtos.models.tamanhos import Tamanho
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import FieldError
+
+
 
 class Produto(models.Model):
     nome = models.CharField(max_length=100)
@@ -34,12 +38,7 @@ class Produto(models.Model):
         produto_dict = {
             'id': self.id,
             'nome': self.nome,
-            'categoria': self.categoria.nome if self.categoria else None,
-            'fornecedor_cnpj': self.fornecedor_cnpj.cnpj if self.fornecedor_cnpj else None,
-            'alergenos': list(self.alergenos.all().values_list('nome', flat=True)),
-            'tamanho': list(self.tamanho.all().values_list('nome', flat=True)),
             'descricao': self.descricao,
-            'preco': float(self.preco),
             'cod_barras': self.cod_barras,
             'tamanho_quantidade': self.tamanho_quantidade,
             'disponibilidade': self.disponibilidade,
@@ -47,11 +46,48 @@ class Produto(models.Model):
             'tempo_preparo': self.tempo_preparo,
             'receita': self.receita,
             'informacoes_nutricionais': self.informacoes_nutricionais,
-            'classificacao': float(self.classificacao) if self.classificacao else None,
             'data_inclusao': str(self.data_inclusao) if self.data_inclusao else None,
             'estoque': self.estoque,
             'restricoes_dieteticas': self.restricoes_dieteticas,
             'sazonalidade': self.sazonalidade,
             'numero_pedido_identificador': self.numero_pedido_identificador,
         }
+        try:
+            produto_dict['categoria'] = self.categoria.nome if self.categoria else None
+        except ObjectDoesNotExist:
+            produto_dict['categoria'] = None
+            return produto_dict
+
+        try:
+            produto_dict['fornecedor_cnpj'] = self.fornecedor_cnpj.to_dict()
+        except ObjectDoesNotExist:
+            produto_dict['fornecedor_cnpj'] = None    
+
+        try:
+            produto_dict['preco'] = float(self.preco)
+        except (TypeError, ValueError):
+            produto_dict['preco'] = None
+
+        try:
+            produto_dict['classificacao'] = float(self.classificacao) if self.classificacao else None
+        except (TypeError, ValueError):
+            produto_dict['classificacao'] = None
+
+        try:
+            produto_dict['data_inclusao'] = str(self.data_inclusao) if self.data_inclusao else None
+        except (TypeError, ValueError):
+            produto_dict['data_inclusao'] = None
+
+        try:
+            alergenos_list = list(self.alergenos.all().values_list('alergeno_nome', flat=True))
+            produto_dict['alergenos'] = alergenos_list
+        except (ObjectDoesNotExist, FieldError):
+            produto_dict['alergenos'] = []
+
+        try:
+            tamanho_list = list(self.tamanho.all().values_list('tamanho', flat=True))
+            produto_dict['tamanho'] = tamanho_list
+        except (ObjectDoesNotExist, FieldError):
+            produto_dict['tamanho'] = []
+
         return produto_dict

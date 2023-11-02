@@ -22,6 +22,12 @@ class Tamanho():
         except Mdl_tamanho.DoesNotExist:
             return None
 
+    def read_tamanho_id(self,id):
+        try:
+            self.obj_tamanho = Mdl_tamanho.objects.get(id=id)
+        except Mdl_tamanho.DoesNotExist:
+            return None
+
     def update_tamanho(self, id, tamanho):
         try:
             self.obj_tamanho = Mdl_tamanho.objects.get(id=id)

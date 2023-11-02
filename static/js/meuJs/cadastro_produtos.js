@@ -139,7 +139,7 @@ modal_cad_produto.innerHTML = `
             </div>
         </form>        
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Descartar</button>
+            <button type="button" class="btn btn-danger" id="btn_descartar_produto" >Descartar</button>
             <button type="button" class="btn btn-outline-primary" id="btn_salvar_produtos">Salvar</button>
         </div>
     </div>

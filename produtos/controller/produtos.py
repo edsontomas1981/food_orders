@@ -1,3 +1,4 @@
+from datetime import datetime
 from produtos.models.produto import Produto as Mdl_produto
 from produtos.controller.alergenos import Alergenos
 from produtos.controller.tamanho import Tamanho
@@ -11,11 +12,12 @@ class Produto():
 
     def create_produto(self,dados):
 
-
+        # Obtém a data e hora atuais
+        data_atual = datetime.now()
         categoria = self.carrega_categoria(dados)
         fornecedor = self.carrega_fornecedor(dados)
         
-        verificar_numero('string',dados['tempo_preparo'])
+        verificar_numero(dados['tempo_preparo'])
 
         # try:
         self.obj_produto = Mdl_produto(
@@ -23,22 +25,23 @@ class Produto():
             categoria=categoria.obj_categoria,
             fornecedor_cnpj=fornecedor.obj_fornecedor,
             descricao=dados['descricao'],
-            preco=dados['preco'],
+            preco=verificar_numero(dados['preco']),
             cod_barras=dados['cod_barras'],
             # tamanho_quantidade=dados['estoque'],
             disponibilidade=dados['disponivel'],
             imagem_url=dados['imagem_url'],
-            # tempo_preparo=verifica_dados('string',dados['tempo_preparo']),
+            tempo_preparo=verificar_numero(dados['tempo_preparo']),
             receita=dados['receita'],
             informacoes_nutricionais=dados['informacoes_nutricionais'],
-            # classificacao=dados['classificacao'],
-            # data_inclusao=dados['data_inclusao'],
-            estoque=dados['estoque'],
+            data_inclusao=data_atual,
+            estoque=verificar_numero(dados['estoque']),
             restricoes_dieteticas=dados['restricoes_dieteticas'],
             sazonalidade=dados['sazonalidade'],
             numero_pedido_identificador=dados['numero_pedido_identificador']
         )
         self.obj_produto.save()
+
+        print(self.obj_produto)
         self.cadastra_alergenos(dados)
         self.cadastra_tamanhos(dados)
         #     return 200
@@ -97,9 +100,16 @@ class Produto():
         return fornecedor
         
     def cadastra_alergenos(self,dados):
-        for alergeno in dados['alergeno']:
-            print(alergeno)
+        for item in dados['alergeno']:
+            print(item)
+            alergeno = Alergenos()
+            alergeno.read_alergenos_id(item['id'])
+            self.obj_produto.alergenos.add(alergeno.obj_alergenos)
+
         
     def cadastra_tamanhos(self,dados):
-        for tamanho in dados['tamanho']:
-            print(tamanho)
+        for item in dados['tamanho']:
+            print(item)
+            tamanho = Tamanho()
+            tamanho.read_tamanho_id(item['id'])
+            self.obj_produto.tamanho.add(tamanho.obj_tamanho)
