@@ -44,17 +44,20 @@ const remover_classes = (classe,lista_campos_obrigatorios)=>{
 }
 
 const popula_fornecedor = (response) =>{
-    document.getElementById("cnpj").value = response.fornecedor.cnpj_fornecedor
-    document.getElementById("raz_soc_fornecedor").value = response.fornecedor.raz_soc_fornecedor
-    document.getElementById('cep').value = response.fornecedor.endereco.cep
-    document.getElementById('logradouro').value = response.fornecedor.endereco.logradouro
-    document.getElementById('numero').value = response.fornecedor.endereco.numero
-    document.getElementById('bairro').value = response.fornecedor.endereco.bairro
-    document.getElementById('cidade').value = response.fornecedor.endereco.cidade
-    document.getElementById('estado').value = response.fornecedor.endereco.estado
-    document.getElementById('complemento').value = response.fornecedor.endereco.complemento
-    document.getElementById('observacao').value = response.fornecedor.endereco.observacao
-    document.getElementById('fornecedor_id').value =response.fornecedor.id
 
-    popula_tabela_contatos(response)
+    if (response.fornecedor.id){
+        document.getElementById("cnpj").value = response.fornecedor.cnpj_fornecedor
+        document.getElementById("raz_soc_fornecedor").value = response.fornecedor.raz_soc_fornecedor
+        document.getElementById('cep').value = response.fornecedor.endereco.cep
+        document.getElementById('logradouro').value = response.fornecedor.endereco.logradouro
+        document.getElementById('numero').value = response.fornecedor.endereco.numero
+        document.getElementById('bairro').value = response.fornecedor.endereco.bairro
+        document.getElementById('cidade').value = response.fornecedor.endereco.cidade
+        document.getElementById('estado').value = response.fornecedor.endereco.estado
+        document.getElementById('complemento').value = response.fornecedor.endereco.complemento
+        document.getElementById('observacao').value = response.fornecedor.endereco.observacao
+        document.getElementById('fornecedor_id').value =response.fornecedor.id
+        popula_tabela_contatos(response)
+    }
+
 }

@@ -2,12 +2,12 @@ const abre_modal = () => {
   $('#cadastro_categoria').modal('show');
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  tooltip('cmb_categorias', 'Adicione uma nova categoria ', '+', 'cadastro_categoria');
-  tooltip('cmb_tamanho', 'Adicione um novo tamanho ', '+', 'cadastro_tamanho');
-  tooltip('cmb_alergenos', 'Adicione um novo alérgeno ', '+', 'cadastro_alergenos');
-  tooltip('fornecedor_raz_soc', 'Adicione um novo fornecedor ', '+', 'modal_cadastro_fornecedores');
-  tooltip('fornecedor_cnpj', 'Adicione um novo fornecedor ', '+', 'modal_cadastro_fornecedores');
+document.addEventListener('DOMContentLoaded', async () => {
+  await tooltip('cmb_categorias', 'Adicione uma nova categoria ', '+', 'cadastro_categoria');
+  await tooltip('cmb_tamanho', 'Adicione um novo tamanho ', '+', 'cadastro_tamanho');
+  await tooltip('cmb_alergenos', 'Adicione um novo alérgeno ', '+', 'cadastro_alergenos');
+  await tooltip('fornecedor_raz_soc', 'Adicione um novo fornecedor ', '+', 'modal_cadastro_fornecedores');
+  await tooltip('fornecedor_cnpj', 'Adicione um novo fornecedor ', '+', 'modal_cadastro_fornecedores');
 });
 
 const tooltip = (id_div, texto_msg, texto_botao, nome_modal) => {
