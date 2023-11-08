@@ -4,20 +4,19 @@ import Categorias from './Categorias';
 
 const TelaPedidos = ({ route }) => {
 
-  const buttons = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8'];
+  const buttons = ['Bebidas', 'Alimento', 'Pizzas'];
 
   const { buttonText } = route.params;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Food Orders + {buttonText}</Text>
-
+      <Text style={styles.textPedido}>Pedidos Mesa {buttonText}</Text>
       <View style={styles.buttonContainer}>
         {buttons.map((buttonText, index) => (
           <Categorias
             key={index} // Importante ter uma chave única para cada elemento na lista
             text={buttonText}
-            onPress={() => handleButtonPress(index)}
+            onPress={() => voltaPrincipal(buttonText)} // Adicione o onPress com a função desejada
           />
         ))}
       </View>
@@ -37,12 +36,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#9b0800',
   },
+  textPedido: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+  },
   buttonContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    padding: 10,
   },
 
 });

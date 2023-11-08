@@ -3,10 +3,14 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import Mesa from './Mesa';
 
 const TelaPrincipal = ({ navigation }) => {
-  const buttons = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8'];
+  const buttons = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9'];
 
   const handleButtonPress = buttonText => {
     navigation.navigate('TelaPedidos', { buttonText });
+  };
+
+  const voltaPrincipal = buttonText => {
+    navigation.navigate('TelaPrincipal', { buttonText });
   };
 
   return (

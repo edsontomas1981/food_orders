@@ -12,7 +12,7 @@ const Mesa = ({ text, onPress }) => {
 const styles = StyleSheet.create({
   buttonMesa: {
     width: 80,
-    height: 40,
+    height: 80,
     borderRadius: 20,
     backgroundColor: '#9b0800',
     alignItems: 'center',

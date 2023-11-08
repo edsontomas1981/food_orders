@@ -2,17 +2,18 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 const Categorias = ({ text, onPress }) => {
+
   return (
-    <TouchableOpacity style={styles.buttonCategoria} onPress={onPress}>
+    <TouchableOpacity style={styles.buttonCategorias} onPress={onPress}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  buttonCategoria: {
+  buttonCategorias: {
     width: 80,
-    height: 40,
+    height: 80,
     borderRadius: 20,
     backgroundColor: '#9b0800',
     alignItems: 'center',
