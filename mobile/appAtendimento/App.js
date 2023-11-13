@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { ToggleButton } from 'react-native-paper';
-
-import Menu from './components/Menu';  // Importe o componente Menu
-import Mesa from './components/Mesa';  // Importe o componente Menu
+import { Appbar, Drawer } from 'react-native-paper';
+import { Menu } from './components/Menu';
 
 class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.div}>
-          <ToggleButton style={styles.botao} icon="menu" />
-          <Text style={styles.texto}>Food Orders</Text>
-        </View>
+        <Menu />
       </View>
     );
   }
@@ -24,7 +20,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    backgroundColor: 'red',
+    backgroundColor: '#F6F1EE',
   },
   botao: {
     justifyContent: 'flex-start',
