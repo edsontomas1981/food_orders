@@ -14,6 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/72064b806a.js" crossorigin="anonymous"></script>
 
+    <!-- Slick Carrossel -->
+    <link rel="stylesheet" type="text/css" href="../static/js/meuJs/slick-1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/js/meuJs/slick-1.8.1/slick/slick-theme.css"/>
+
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/style.css" />
     <link rel="stylesheet" href="../static/css/meuCss/estilo.css" />
@@ -142,13 +147,19 @@
 
         <!-- partial -->
         <div class="content-wrapper">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastro_produtos">
-            Cadastro Produtos          
-          </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastro_fornecedores">
-            Cadastro Fornecedores          
-          </button>
-
+            <div class="row" id="div_pedidos">
+                <div>
+                    <h4 class="card-title text-info titulo-pedido" >Pedidos Mesa nº35 </h4>
+                    <div data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+                        <div><h3>1</h3></div>
+                        <div><h3>2</h3></div>
+                        <div><h3>3</h3></div>
+                        <div><h3>4</h3></div>
+                        <div><h3>5</h3></div>
+                        <div><h3>6</h3></div>
+                      </div>
+                </div>
+            </div>
         </div>
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -314,6 +325,7 @@
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../static/node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../static/node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="../static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -383,7 +395,6 @@
   <script src="../static/js/meuJs/produtos/btn_salvar_produto.js"></script>
   <script src="../static/js/meuJs/produtos/remove_item_dicionario.js"></script>
 
-
   <script src="../static/js/meuJs/utils/form_to_dicionario.js"></script>
   <script src="../static/js/meuJs/utils/alertas.js"></script>
   <script src="../static/js/meuJs/utils/conexao.js"></script>
@@ -391,12 +402,14 @@
   <script src="../static/js/meuJs/utils/inserir_classe_campo_erro.js"></script>
   <script src="../static/js/meuJs/utils/remover_classe_campo_erro.js"></script>
 
-
-
   <script src="../static/js/meuJs/imagem.js"></script>
 
   <script src="../static/js/cadastros/component/categorias.js"></script>
   <script src="../static/js/cadastros/teste.js"></script>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="../static/js/meuJs/slick-1.8.1/slick/slick.min.js"></script>  
 </body>
 
 </html>

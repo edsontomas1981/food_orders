@@ -1,37 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+  <head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../static/images/favicon.png" />
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@5"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/72064b806a.js" crossorigin="anonymous"></script>
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin</title>
-  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="shortcut icon" href="images/favicon.png" />
-</head>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/meuCss/estilo.css" />
+  </head>
+  
 <body>
-  <header class=" container-scroller">
-    <!-- partial:partials/_navbar.html -->
+  <div class="container-scroller">
     <nav class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="template_navbar"></nav>
-    <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar"></nav>
-    <main id="template_modal">
-      okokokokokokokokok
-    </main>
-  </header>
+    <!-- partial -->
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+          <!-- <div class="user-info">
+            <img src="images/face.jpg" alt="">
+            <p class="name">Richard V.Welsh</p>
+            <p class="designation">Manager</p>
+            <span class="online"></span>
+          </div> -->
+          <ul class="nav">
+            <li class="nav-item active" >
+              <a class="nav-link" data-toggle="collapse" href="#cadastros" aria-expanded="true" aria-controls="cadastros">
+                <img src="../static/images/icons/005-forms.png" alt="">
+                <span class="menu-title">Cadastros<i class="fa fa-sort-down"></i></span>
+              </a>
+              <div class="collapse" id="cadastros">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modal_cadastro_produtos" >
+                      Produtos
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modal_cadastro_fornecedores" >
+                      Fornecedores
+                    </a>
+                  </li>                  
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/widgets.html">
+                <img src="../static/images/icons/2.png" alt="">
+                <span class="menu-title">Widgets</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/forms/index.html">
+                <img src="../static/images/icons/005-forms.png" alt="">
+                <span class="menu-title">Forms</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ui-elements/buttons.html">
+                <img src="../static/images/icons/4.png" alt="">
+                <span class="menu-title">Buttons</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/tables/index.html">
+                <img src="../static/images/icons/5.png" alt="">
+                <span class="menu-title">Tables</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../static/pages/charts/index.html">
+                <img src="../static/images/icons/6.png" alt="">
+                <span class="menu-title">Charts</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../static/pages/icons/index.html">
+                <img src="../static/images/icons/7.png" alt="">
+                <span class="menu-title">Icons</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ui-elements/typography.html">
+                <img src="../static/images/icons/8.png" alt="">
+                <span class="menu-title">Typography</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#sample-pages" aria-expanded="false" aria-controls="sample-pages">
+                <img src="../static/images/icons/9.png" alt="">
+                <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
+              </a>
+              <div class="collapse" id="sample-pages">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="pages/samples/blank_page.html">
+                      Blank Page
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="pages/samples/login.html">
+                      Login
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="pages/samples/register.html">
+                      Register
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="pages/samples/404.html">
+                      404
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="pages/samples/500.html">
+                      500
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="../static/images/icons/10.png" alt="">
+                <span class="menu-title">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/misc.js"></script>
-  <script src="js/meuJs/carrega_navbar.js"></script>
-  <script src="js/meuJs/carrega_sidebar.js"></script>
-  <!-- <script src="js/meuJs/cadastro_produtos.js"></script> -->
+        <!-- partial -->
+        <div class="content-wrapper">
+          
+
+        </div>
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="float-right">
+                <a href="#">edsontomasdev</a> &copy; 2023
+            </span>
+          </div>
+        </footer>
+      </div>
+    </div>
+      <div  id="template_modal">
+      </div>
+      <div id="modal_categoria">
+      </div>
+      <div id="modal_tamanho">
+      </div>
+      <div id="modal_alergenos">
+      </div>
+      <div>
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="modal_cadastro_fornecedores" data-backdrop="static" data-keyboard="false">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document" style="max-height: 80vh; overflow-y: auto;">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastro Fornecedores</h5>
+                <button type="button" class="close" data-dismiss="modal" id="fecha_modal_fornecedores" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="form_fornecedores">
+                  <div class="row">
+                    <input type="hidden" id="fornecedor_id">
+                    <div class="form-floating col-sm-6 pl-1 pr-1 ">
+                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder=" ">
+                        <label for="cnpj">CPF/CNPJ:</label>
+                    </div>
+                    <div class="form-floating col-sm-6 pl-1 pr-1 ">
+                      <input type="text" class="form-control" id="raz_soc_fornecedor" name="raz_soc_fornecedor" placeholder=" " >
+                      <label for="raz_soc_fornecedor">Nome/Razão Social:</label>
+                    </div>
+          
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1 ">
+                      <input type="text" class="form-control" id="cep" name="cep" placeholder=" " >
+                      <label for="cep">Cep:</label>
+                    </div>
+          
+                    <div class="form-floating col-sm-4 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="logradouro" name="logradouro" placeholder=" " >
+                      <label for="logradouro">Endereço:</label>
+                    </div>                    
+          
+                    <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="numero" name="numero" placeholder=" " >
+                      <label for="numero">Número:</label>
+                    </div>   
+                              
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1 ">
+                      <input type="text" class="form-control" id="complemento" name="complemento" placeholder=" " >
+                      <label for="complemento">Complemento:</label>
+                    </div>
+
+                    <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="bairro" name="bairro" placeholder=" " >
+                      <label for="bairro">Bairro:</label>
+                    </div> 
+                    <div class="form-floating col-sm-5 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="cidade" name="cidade" placeholder=" " >
+                      <label for="cidade">Cidade:</label>
+                    </div>
+          
+                    <div class="form-floating col-sm-2 pl-1 pr-1 mt-1">
+                      <input type="text" class="form-control" id="estado" name="estado" placeholder=" " >
+                      <label for="estado">UF:</label>
+                    </div>
+                    <div class="form-floating col-sm-12 pl-1 pr-1 mt-1">
+                      <textarea class="form-control" placeholder=" " id="observacao"></textarea>
+                      <label for="observacao">Observações</label>
+                    </div>
+                    <div class="circle-shadow-info text-end">
+                      <a class="btn btn-outline-primary rounded-circle mt-3" data-toggle="modal" id="btn_add_contato" data-target="#modal_contatos">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="descartar" data-dismiss="modal">Descartar</button>
+                <button type="button" class="btn btn-outline-primary" id="btn_save_fornecedores">Salvar</button>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+      <div id="div_modal_contato_fornecedores">
+        <div class="modal" tabindex="-1" role="dialog" id="modal_contatos">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Contatos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="form_contatos">
+                  <input type="hidden">
+                  <div class="row">
+                    <div class="form-floating col-sm-4 pl-1 pr-1 mt-1">
+                      <select class="form-select" id="tipo_contato" aria-label="tipo_de_contato">
+                        <option value="0">Selecione</option>
+                        <option value="Telefone">Telefone</option>
+                        <option value="E-mail">E-mail</option>
+                        <option value="Whatsapp">Whatsapp</option>
+                        <option value="Telegram">Telegram</option>
+                        <option value="Outros">Outros</option>
+                      </select>
+                      <label for="tipo_contato">Tipo de Contatos</label>
+                    </div>
+
+                    <div class="form-floating col-sm-4 pl-1 pr-1 mt-1">
+                      <input class="form-control" id="contato" placeholder=" " aria-label="contato">
+                      <label for="contato">Contato</label>
+                    </div>
+
+                    <div class="form-floating col-sm-3 pl-1 pr-1 mt-1">
+                      <input class="form-control" id="nome_contato" placeholder=" " aria-label="nome_contato">
+                      <label for="nome_contato">Nome Contato</label>
+                    </div>
+                    <div class="col-sm-1 pl-1 pr-4 mt-2">
+                      <a class="btn btn-outline-primary btn-lg" id="btn_add_contatos">+</a>
+                    </div>                    
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table center-aligned-table" id="tabela_contato">
+                            <thead>
+                              <tr class="text-primary">
+                                <th>Número</th>
+                                <th>Tipo contato</th>
+                                <th>Nome contato</th>
+                                <th></th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody id="row_contatos">
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>                  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../static/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../static/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../static/node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="../static/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../static/js/off-canvas.js"></script>
+  <script src="../static/js/hoverable-collapse.js"></script>
+  <script src="../static/js/misc.js"></script>
+  <script src="../static/js/chart.js"></script>
+  <script src="../static/js/maps.js"></script>
+
+  <script src="../static/js/meuJs/utils/valida_cnpj_cpf.js"></script>
+  <script src="../static/js/meuJs/utils/busca_cep.js"></script>
+  <script src="../static/js/meuJs/utils/valida_cep.js"></script>
+  <script src="../static/js/meuJs/utils/limpa_form.js"></script>
+  <script src="../static/js/meuJs/utils/mascara_telefone.js"></script>
+  <script src="../static/js/meuJs/utils/pega_click_tabela.js"></script>
+  <script src="../static/js/meuJs/utils/limpa_tabelas.js"></script>
+  <script src="../static/js/meuJs/utils/popula_select.js"></script>
+  <script src="../static/js/meuJs/utils/popula_tbody.js"></script>
+
+  <script src="../static/js/meuJs/produtos/cnpj_fornecedores.js"></script>
+
+  <script src="../static/js/meuJs/carrega_navbar.js"></script>
+  <script src="../static/js/meuJs/carrega_sidebar.js"></script>
+
+  <script src="../static/js/meuJs/cadastro_produtos.js"></script>
+
+  <script src="../static/js/meuJs/modal_categoria.js"></script>
+  <script src="../static/js/meuJs/modal_tamanhos.js"></script>,
+  <script src="../static/js/meuJs/modal_alegernos.js"></script>
+  <!-- <script src="../static/js/meuJs/modal_fornecedores.js"></script> -->
+
+  <script src="../static/js/meuJs/tamanho/tamanho.js"></script>
+  <script src="../static/js/meuJs/tamanho/add_tamanho.js"></script>
+  <script src="../static/js/meuJs/tamanho/delete_tamanho.js"></script>  
+  <script src="../static/js/meuJs/tamanho/tabela_tamanho.js"></script>
+
+  <script src="../static/js/meuJs/alergenos/add_alergenos.js"></script>
+  <script src="../static/js/meuJs/alergenos/delete_alergenos.js"></script>
+  <script src="../static/js/meuJs/alergenos/alergenos.js"></script>
+  <script src="../static/js/meuJs/alergenos/tabela_alergenos.js"></script>  
+
+  <script src="../static/js/meuJs/fornecedores/fornecedores.js"></script>
+  <script src="../static/js/meuJs/fornecedores/input_cep.js"></script>
+  <script src="../static/js/meuJs/fornecedores/txt_cnpj_cpf.js"></script>
+  <script src="../static/js/meuJs/fornecedores/input_nome_razao.js"></script>
+  <script src="../static/js/meuJs/fornecedores/modal_fornecedores.js"></script>
+  
+  <script src="../static/js/meuJs/contatos/contatos.js"></script>
+  <script src="../static/js/meuJs/contatos/select_tipo_contato.js"></script>
+  <script src="../static/js/meuJs/contatos/inpt_contato.js"></script>
+  <script src="../static/js/meuJs/contatos/add_contatos.js"></script>
+  <script src="../static/js/meuJs/contatos/table_contatos.js"></script>
+
+  <script src="../static/js/meuJs/categorias/categorias.js"></script>
+  <script src="../static/js/meuJs/categorias/tabela_categorias.js"></script>
+  <script src="../static/js/meuJs/categorias/add_categorias.js"></script>
+  <script src="../static/js/meuJs/categorias/delete_categorias.js"></script>
+  <script src="../static/js/meuJs/categorias/carrega_categorias.js"></script>
+
+  <script src="../static/js/meuJs/produtos/cmb_categorias.js"></script>
+  <script src="../static/js/meuJs/produtos/cmb_tamanhos.js"></script>
+  <script src="../static/js/meuJs/produtos/cmb_alergennos.js"></script>
+  <script src="../static/js/meuJs/produtos/btn_add_alergenos.js"></script>
+  <script src="../static/js/meuJs/produtos/btn_add_tamanho.js"></script>
+  <script src="../static/js/meuJs/produtos/btn_salvar_produto.js"></script>
+  <script src="../static/js/meuJs/produtos/remove_item_dicionario.js"></script>
+
+  <script src="../static/js/meuJs/utils/form_to_dicionario.js"></script>
+  <script src="../static/js/meuJs/utils/alertas.js"></script>
+  <script src="../static/js/meuJs/utils/conexao.js"></script>
+  <script src="../static/js/meuJs/utils/load_pagina.js"></script>
+  <script src="../static/js/meuJs/utils/inserir_classe_campo_erro.js"></script>
+  <script src="../static/js/meuJs/utils/remover_classe_campo_erro.js"></script>
+
+  <script src="../static/js/meuJs/imagem.js"></script>
+
+  <script src="../static/js/cadastros/component/categorias.js"></script>
+  <script src="../static/js/cadastros/teste.js"></script>
 </body>
 
 </html>

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import { FAB } from 'react-native-paper';
+import { FAB,Button} from 'react-native-paper';
 
 const Mesa = () => (
-  <FAB
-    icon="plus"
-    onPress={() => console.log('Pressed')}
-  />
+  <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+    Press me
+  </Button>
 );
 
 const styles = StyleSheet.create({

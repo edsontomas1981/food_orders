@@ -25,14 +25,8 @@
     <!-- partial -->
     <div class="container-fluid">
       <div class="row row-offcanvas row-offcanvas-right">
-        <!-- partial:partials/_sidebar.html -->
         <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
-          <!-- <div class="user-info">
-            <img src="images/face.jpg" alt="">
-            <p class="name">Richard V.Welsh</p>
-            <p class="designation">Manager</p>
-            <span class="online"></span>
-          </div> -->
+
           <ul class="nav">
             <li class="nav-item active" >
               <a class="nav-link" data-toggle="collapse" href="#cadastros" aria-expanded="true" aria-controls="cadastros">
@@ -142,13 +136,8 @@
 
         <!-- partial -->
         <div class="content-wrapper">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastro_produtos">
-            Cadastro Produtos          
-          </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_cadastro_fornecedores">
-            Cadastro Fornecedores          
-          </button>
-
+            <div class="row" id="div_atendimento">
+            </div>
         </div>
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -345,7 +334,9 @@
   <script src="../static/js/meuJs/modal_categoria.js"></script>
   <script src="../static/js/meuJs/modal_tamanhos.js"></script>,
   <script src="../static/js/meuJs/modal_alegernos.js"></script>
-  <!-- <script src="../static/js/meuJs/modal_fornecedores.js"></script> -->
+
+  <script src="../static/js/meuJs/mesa/gera_mesas.js"></script>
+
 
   <script src="../static/js/meuJs/tamanho/tamanho.js"></script>
   <script src="../static/js/meuJs/tamanho/add_tamanho.js"></script>
@@ -383,15 +374,12 @@
   <script src="../static/js/meuJs/produtos/btn_salvar_produto.js"></script>
   <script src="../static/js/meuJs/produtos/remove_item_dicionario.js"></script>
 
-
   <script src="../static/js/meuJs/utils/form_to_dicionario.js"></script>
   <script src="../static/js/meuJs/utils/alertas.js"></script>
   <script src="../static/js/meuJs/utils/conexao.js"></script>
   <script src="../static/js/meuJs/utils/load_pagina.js"></script>
   <script src="../static/js/meuJs/utils/inserir_classe_campo_erro.js"></script>
   <script src="../static/js/meuJs/utils/remover_classe_campo_erro.js"></script>
-
-
 
   <script src="../static/js/meuJs/imagem.js"></script>
 

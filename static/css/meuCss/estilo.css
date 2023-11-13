@@ -4,6 +4,28 @@
     color: #ff0000; /* Cor do texto vermelho (opcional) */
   }
 
+  .mesa {
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+  }
+
+  .em-uso{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .titulo-pedido{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+  }
+
   .modal-body {
     max-height: 450px; /* Defina a altura máxima para o scroll funcionar */
     overflow-y: auto; /* Isso habilita a barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
