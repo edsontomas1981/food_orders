@@ -5,18 +5,37 @@
   }
 
   .mesa {
-    width: 80px;
-    height: 80px;
-    border-radius: 20%;
-    margin-top: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;    
+    text-align: center;  
+    padding: 10px;
   }
 
   .em-uso{
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: coral;
+    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
+  }
+
+  .scrollable-div {
+    overflow-x: auto;
+    white-space: nowrap; /* Evita que o conteúdo quebre em várias linhas */
+  }
+
+  .token-mesa{
+    font-size: 10px;
+    display: flex;
+  }
+
+  .class-container{
+    margin-top: 60px;
+    max-height: 500px;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .rodape{
+    padding: 10%;
   }
 
   .titulo-pedido{

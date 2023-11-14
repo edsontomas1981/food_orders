@@ -3,58 +3,65 @@ function gerarBlocosHTML(lista) {
 
     lista.forEach(function(item) {
       var blocoHTML = document.createElement("div");
-      blocoHTML.className = "col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6 mb-4";
+      blocoHTML.className = "col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6 mb-4 mesa";
+      
+      // Adiciona a classe se 'vazia' for falsa
+      const cardBodyClass = item.vazia ? "" : "em-uso";
 
       blocoHTML.innerHTML = `
-        <div class="card em-uso">
-          <div class="card-body">
+        <div class="card">
+        <div class="card-body ${cardBodyClass}">
             <h7 class="card-title text-info">Mesa nº ${item.codigo}</h7>
-            <h7 class="card-subtitle mb-4 text-muted"> Token ${item.descricao}</h7>
-            <a href="#" class="btn btn-outline-success btn-sm">View Order</a>
-          </div>
+            <h7 class="mb-4 token-mesa"> ${item.descricao}</h7>
+            <a href="#" class="btn btn-outline-success btn-sm" onclick="redirecionarParaOutraPagina('${item.codigo}')">View Order</a>
+            </div>
         </div>
       `;
       conteudoDiv.appendChild(blocoHTML);
     });
   }
 
-  $(document).ready(function(){
-    $('#div_pedidos div[data-slick]').slick({
-      slidesToShow: 4,
-      slidesToScroll: 4
-    });
-  });
+  // Função para redirecionar para outra página com o código como parâmetro
+  function redirecionarParaOutraPagina(codigo) {
+    // Substitua 'outra_pagina.html' pela URL da sua outra página
+    window.location.href = `pedidos.html?mesa=${codigo}`;
+  }
 
   // Exemplo de dicionário
   var exemploDicionario = 
     [
-    {"codigo": "1234", "descricao": "Item A", "progresso": 80},
-    {"codigo": "1234", "descricao": "Item B", "progresso": 80},
-    {"codigo": "1234", "descricao": "Item C", "progresso": 80},
-    {"codigo": "1234", "descricao": "Item D", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item E", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item F", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item G", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item H", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item I", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item J", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item K", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item L", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item M", "progresso": 80},  
-    {"codigo": "1234", "descricao": "Item A", "progresso": 80},
-    {"codigo": "1234", "descricao": "Item B", "progresso": 80},
-    {"codigo": "1234", "descricao": "Item C", "progresso": 80},
-    {"codigo": "1234", "descricao": "Item D", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item E", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item F", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item G", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item H", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item I", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item J", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item K", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item L", "progresso": 80},        
-    {"codigo": "1234", "descricao": "Item M", "progresso": 80},      
-
+    {"codigo": "1", "descricao": "2597", "progresso": 80,'vazia':false},
+    {"codigo": "2", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "3", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "4", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "5", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "6", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "7", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "8", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "9", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "10", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "11", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "12", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "13", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "14", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "15", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "16", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "17", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "18", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "19", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "20", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "21", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "22", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "23", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "25", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "26", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "27", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "28", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "29", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "30", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "31", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "32", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "33", "descricao": "", "progresso": 80,'vazia':true},    
 ]
     
   ;

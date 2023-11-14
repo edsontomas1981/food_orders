@@ -148,16 +148,17 @@
         <!-- partial -->
         <div class="content-wrapper">
             <div class="row" id="div_pedidos">
-                <div>
-                    <h4 class="card-title text-info titulo-pedido" >Pedidos Mesa nº35 </h4>
-                    <div data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
-                        <div><h3>1</h3></div>
-                        <div><h3>2</h3></div>
-                        <div><h3>3</h3></div>
-                        <div><h3>4</h3></div>
-                        <div><h3>5</h3></div>
-                        <div><h3>6</h3></div>
-                      </div>
+                <div class="scrollable-div">
+                    <h4 class="card-title text-info titulo-pedido" id="titulo_pedido"></h4>
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Doces</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Salgados</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Bebidas</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -330,7 +331,7 @@
   <script src="../static/node_modules/popper.js/dist/umd/popper.min.js"></script>
   <script src="../static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../static/node_modules/chart.js/dist/Chart.min.js"></script>
-  <script src="../static/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+  <!-- <script src="../static/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script> -->
   <script src="../static/js/off-canvas.js"></script>
   <script src="../static/js/hoverable-collapse.js"></script>
   <script src="../static/js/misc.js"></script>
@@ -401,6 +402,9 @@
   <script src="../static/js/meuJs/utils/load_pagina.js"></script>
   <script src="../static/js/meuJs/utils/inserir_classe_campo_erro.js"></script>
   <script src="../static/js/meuJs/utils/remover_classe_campo_erro.js"></script>
+
+  <script src="../static/js/meuJs/mesa/pedido_mesa.js"></script>
+
 
   <script src="../static/js/meuJs/imagem.js"></script>
 
