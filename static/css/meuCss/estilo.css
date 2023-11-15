@@ -8,8 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;  
-    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 2px 1px rgba(129, 129, 129, 0.2);
+    margin:5px;
+    max-width: 40%;
   }
 
   .em-uso{

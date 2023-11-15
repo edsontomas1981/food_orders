@@ -9,17 +9,27 @@ function gerarBlocosHTML(lista) {
       const cardBodyClass = item.vazia ? "" : "em-uso";
 
       blocoHTML.innerHTML = `
-        <div class="card">
-        <div class="card-body ${cardBodyClass}">
+        <div class="card ${cardBodyClass}">
+          <div class="card-body ">
             <h7 class="card-title text-info">Mesa nº ${item.codigo}</h7>
             <h7 class="mb-4 token-mesa"> ${item.descricao}</h7>
             <a href="#" class="btn btn-outline-success btn-sm" onclick="redirecionarParaOutraPagina('${item.codigo}')">View Order</a>
-            </div>
+          </div>
         </div>
       `;
       conteudoDiv.appendChild(blocoHTML);
     });
   }
+
+  $(document).ready(function(){
+    $('.your-class').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      // Adicione outras opções conforme necessário
+    });
+  });
 
   // Função para redirecionar para outra página com o código como parâmetro
   function redirecionarParaOutraPagina(codigo) {
