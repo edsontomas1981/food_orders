@@ -15,10 +15,21 @@
   }
 
   .car-categoria{
-    background-color: green;
-    width: fit-content;
-    height: fit-content;
-    margin: 0%;
+    /* width: fit-content;
+    height: fit-content; */
+    margin: 1px;
+    max-width: 540px;
+    white-space: nowrap; /* Impede que o conteúdo seja quebrado em várias linhas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 26;
+
+  }
+
+  .navbar{
+    max-height: 10px;
   }
 
   .em-uso{
