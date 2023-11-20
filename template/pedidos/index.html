@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
   <head>
   	<title>Sidebar 04</title>
     <meta charset="utf-8">
@@ -7,23 +7,19 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		
-    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/meuCss/estilo.css"/>
+    <link rel="stylesheet" type="text/css" href="./js/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="./js/slick/slick-theme.css"/>
 
-    <script src="/static/node_modules/jquery/dist/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/css/meuCss/estilo.css"/>
-    <link rel="stylesheet" type="text/css" href="/template/slick/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="/template/slick/slick/slick-theme.css"/>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <link href="./js/bootstrap.min.js" rel="stylesheet">
+    <script src="./js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/style.css">
   </head>
   <body>
 		
-		<div class="wrapper d-flex align-items-stretch">
+		<div class="wrapper d-flex">
 			<nav id="sidebar">
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -52,89 +48,76 @@
             <a href="#"><span class="fa fa-paper-plane mr-3"></span> Information</a>
           </li>
         </ul>
-
     	</nav>
-
-        <!-- Page Content  -->
+      
+      <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        <div class="your-class">
-            <div class="card mb-3 car-categoria" data-bs-toggle="offcanvas" href="#offcanvasExample" >
+        <div class="carrossel_categorias">
+            <div class="card mb-3 car-categoria" data-id="Cervejas"  onclick="abrir_modal_gera_pedidos()" >
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-muted">Cervejas</small></p>
+                        <p class="card-text"><small class="text-primary">Cervejas</small></p>
                     </div>
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" data-bs-toggle="offcanvas" href="#offcanvasExample">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-muted">Pratos Quentes</small></p>
+                        <p class="card-text"><small class="text-primary">Pratos Quentes</small></p>
                     </div>
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" data-bs-toggle="offcanvas" href="#offcanvasExample">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-muted">Pratos Frios</small></p>
+                        <p class="card-text"><small class="text-primary">Pratos Frios</small></p>
                     </div>
                   </div>
                 </div>
             </div>   
-            <div class="card mb-3 car-categoria" data-bs-toggle="offcanvas" href="#offcanvasExample">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-muted">Sucos e refrigerantes</small></p>
+                        <p class="card-text"><small class="text-primary">Sucos e refrigerantes</small></p>
                     </div>
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" id="sobremesas">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-muted">Sobremesas</small></p>
+                        <p class="card-text" ><small class="text-primary">Sobremesas</small></p>
                     </div>
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-muted">Salgados</small></p>
+                        <p class="card-text"><small class="text-primary">Salgados</small></p>
                     </div>
                   </div>
                 </div>
             </div>                
         </div>
       </div>
-
-      <div id="offcanvas_pedidos" >
-
-      </div>
-
+      <div id="div_modal_pedidos"></div>
     </div>          
 		</div>
- 
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script src="/static/js/meuJs/pedidos/pedidos.js"></script>
-
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="/template/slick/slick/slick.min.js"></script>
-
-
-
+    <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-migrate-1.2.1.min.js"></script>    
+    <script src="./js/popper.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/meuJs/pedidos/pedidos.js"></script>
+    <script type="text/javascript" src="./js/slick/slick.min.js"></script>
   </body>
 </html>

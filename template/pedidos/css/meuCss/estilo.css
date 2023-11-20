@@ -1,0 +1,94 @@
+.campo-erro {
+    border: 1px solid #ff0000; /* Cor vermelha */
+    background-color: #ffeeee; /* Cor de fundo de destaque */
+    color: #ff0000; /* Cor do texto vermelho (opcional) */
+  }
+
+  .qtde_produtos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .btn-qtde-produtos{
+    max-width: 40px;
+    max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .mesa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 0px 2px 1px rgba(129, 129, 129, 0.2);
+    margin:5px;
+    max-width: 40%;
+  }
+
+  .car-categoria{
+    /* width: fit-content;
+    height: fit-content; */
+    margin: 1px;
+    max-width: 540px;
+    white-space: nowrap; /* Impede que o conteúdo seja quebrado em várias linhas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 26;
+
+  }
+
+  .navbar{
+    max-height: 10px;
+  }
+
+  .em-uso{
+    background-color: coral;
+    /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
+  }
+
+  .scrollable-div {
+    overflow-x: auto;
+    white-space: nowrap; /* Evita que o conteúdo quebre em várias linhas */
+  }
+
+  .token-mesa{
+    font-size: 10px;
+    display: flex;
+  }
+
+  .class-container{
+    margin-top: 60px;
+    max-height: 500px;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .rodape{
+    padding: 10%;
+  }
+
+  .titulo-pedido{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+  }
+
+  .modal-body {
+    max-height: 450px; /* Defina a altura máxima para o scroll funcionar */
+    overflow-y: auto; /* Isso habilita a barra de rolagem vertical quando o conteúdo ultrapassa a altura máxima */
+  }
+
+.modal-xxl .modal-dialog {
+  max-width: 1500px; /* Define a largura máxima do modal */
+  width: 90%; /* Ajusta a largura do modal */
+  z-index: 1; /* Este elemento estará acima do outro elemento */
+}
