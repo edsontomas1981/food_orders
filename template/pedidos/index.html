@@ -53,7 +53,7 @@
       <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <div class="carrossel_categorias">
-            <div class="card mb-3 car-categoria" data-id="Cervejas"  onclick="abrir_modal_gera_pedidos()" >
+            <div class="card mb-3 car-categoria" data-id="cervejas"  onclick="teste(this)" >
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
@@ -62,11 +62,11 @@
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
+            <div class="card mb-3 car-categoria" data-id="pizzas" onclick="teste(this)">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                        <p class="card-text"><small class="text-primary">Pratos Quentes</small></p>
+                        <p class="card-text"><small class="text-primary">Pizzas</small></p>
                     </div>
                   </div>
                 </div>
@@ -108,6 +108,24 @@
                 </div>
             </div>                
         </div>
+        <div class="table-responsive" id="relacao_pedidos">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="d-none d-sm-table-cell">Id</th>
+                <th scope="col">Descrição</th>
+                <th scope="col" class="d-none d-sm-table-cell">Preço Unitário</th>
+                <th scope="col">Preço Total</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="tbody_itens_pedido">
+              </tr>
+            </tbody>
+          </table>      
+        </div>
+
       </div>
       <div id="div_modal_pedidos"></div>
     </div>          
@@ -118,6 +136,7 @@
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/meuJs/pedidos/pedidos.js"></script>
+    <script src="./js/meuJs/utils/popula_tbody.js"></script>
     <script type="text/javascript" src="./js/slick/slick.min.js"></script>
   </body>
 </html>

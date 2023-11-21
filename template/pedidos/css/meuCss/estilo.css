@@ -4,6 +4,10 @@
     color: #ff0000; /* Cor do texto vermelho (opcional) */
   }
 
+  .linha{
+    size: 150px;
+  }
+
   .qtde_produtos{
     display: flex;
     justify-content: center;
@@ -15,6 +19,15 @@
   .btn-qtde-produtos{
     max-width: 40px;
     max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .btn-add-exc-produtos{
+    max-width: 15px;
+    max-height: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
