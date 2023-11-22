@@ -11,6 +11,10 @@
     <link rel="stylesheet" type="text/css" href="./js/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="./js/slick/slick-theme.css"/>
 
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <link href="./js/bootstrap.min.js" rel="stylesheet">
     <script src="./js/bootstrap.bundle.min.js"></script>
 
@@ -53,7 +57,7 @@
       <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
         <div class="carrossel_categorias">
-            <div class="card mb-3 car-categoria" data-id="cervejas"  onclick="teste(this)" >
+            <div class="card mb-3 car-categoria" data-id="cervejas" onclick="abrir_modal_gera_pedidos(this)" >
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
@@ -62,7 +66,7 @@
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" data-id="pizzas" onclick="teste(this)">
+            <div class="card mb-3 car-categoria" data-id="pizzas" onclick="abrir_modal_gera_pedidos(this)"">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
@@ -71,7 +75,7 @@
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos(this)">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
@@ -80,7 +84,7 @@
                   </div>
                 </div>
             </div>   
-            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos(this)">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
@@ -89,7 +93,7 @@
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos(this)">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
@@ -98,7 +102,7 @@
                   </div>
                 </div>
             </div>
-            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos()">
+            <div class="card mb-3 car-categoria" onclick="abrir_modal_gera_pedidos(this)">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">

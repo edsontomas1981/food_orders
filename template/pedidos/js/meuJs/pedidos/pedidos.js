@@ -1,25 +1,3 @@
-let json_categorias = {'cervejas':[{'id':1,'descricao':'Corona 600 ml','preco':30.00,'qtde':0},
-                {'id':2,'descricao':'Amstel 600 ml','preco':30.00,'qtde':0},
-                {'id':3,'descricao':'Heineken 600 ml','preco':30.00,'qtde':0},
-                {'id':4,'descricao':'Budweiser 600 ml','preco':30.00,'qtde':0},
-                {'id':5,'descricao':'Brahma 600 ml','preco':30.00,'qtde':0},
-                {'id':6,'descricao':'Imperio 600 ml','preco':30.00,'qtde':0},
-                {'id':7,'descricao':'Eisenbahn','preco':30.00,'qtde':0},
-                {'id':8,'descricao':'Skol 600 ml','preco':30.00,'qtde':0}],
-              'pizzas':[{'id':9,'descricao':'Calabresa','preco':30.00,'qtde':0},
-              {'id':10,'descricao':'Mussarela','preco':30.00,'qtde':0},
-              {'id':11,'descricao':'Frango com Bacon','preco':30.00,'qtde':0},
-              {'id':12,'descricao':'Baiana','preco':30.00,'qtde':0},
-              {'id':13,'descricao':'Portuguesa','preco':30.00,'qtde':0},
-              {'id':14,'descricao':'Atum','preco':30.00,'qtde':0},
-              {'id':15,'descricao':'Frango com Catupiry','preco':30.00,'qtde':0},
-              {'id':16,'descricao':'Calabresa c/ Queijo','preco':30.00,'qtde':0}]}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  carrega_carrossel_pedidos()
-  gera_pedidos()
-})
-
 const carrega_carrossel_pedidos=()=>{
   $('.carrossel_categorias').slick({
     centerMode: true,
@@ -48,20 +26,88 @@ const carrega_carrossel_pedidos=()=>{
   });
 }
 
-const teste = (element)=>{
-  // Obtém o valor do atributo data-id
-  var dataId = element.getAttribute("data-id");
+let estoque = {'cervejas':[{'id':1,'qtde_estoque':45,'descricao':'Corona 600 ml','preco':30.00},
+                {'id':2,'qtde_estoque':45,'descricao':'Amstel 600 ml','preco':30.00},
+                {'id':3,'qtde_estoque':45,'descricao':'Heineken 600 ml','preco':30.00},
+                {'id':4,'qtde_estoque':45,'descricao':'Budweiser 600 ml','preco':30.00},
+                {'id':5,'qtde_estoque':45,'descricao':'Brahma 600 ml','preco':30.00},
+                {'id':6,'qtde_estoque':45,'descricao':'Imperio 600 ml','preco':30.00},
+                {'id':7,'qtde_estoque':45,'descricao':'Eisenbahn','preco':30.00},
+                {'id':8,'qtde_estoque':45,'descricao':'Skol 600 ml','preco':30.00}],
+              'pizzas':[{'id':9,'qtde_estoque':45,'descricao':'Calabresa','preco':30.00},
+              {'id':10,'qtde_estoque':45,'descricao':'Mussarela','preco':30.00},
+              {'id':11,'qtde_estoque':45,'descricao':'Frango com Bacon','preco':30.00},
+              {'id':12,'qtde_estoque':45,'descricao':'Baiana','preco':30.00},
+              {'id':13,'qtde_estoque':45,'descricao':'Portuguesa','preco':30.00},
+              {'id':14,'qtde_estoque':45,'descricao':'Atum','preco':30.00},
+              {'id':15,'qtde_estoque':45,'descricao':'Frango com Catupiry','preco':30.00},
+              {'id':16,'qtde_estoque':45,'descricao':'Calabresa c/ Queijo','preco':30.00}]}
 
-  // Exibe o valor no console (você pode fazer o que quiser com o valor)
-  console.log("Valor do data-id:", dataId);
+const consultarEstoque = (id) => {
+  // Procura o item com o ID correspondente em todas as categorias
+  const itemEncontrado = Object.values(estoque)
+    .flat()
+    .find(item => item.id == id);
+
+  if (itemEncontrado) {
+    // Retorna a quantidade em estoque do item encontrado
+    return itemEncontrado.qtde_estoque;
+  } else {
+    return 'Item não encontrado no estoque.';
+  }
+};
+
+function removerDoEstoque(id, quantidade) {
+  // Procura o item com o ID correspondente em todas as categorias
+  const item = Object.values(estoque)
+    .flat()
+    .find(item => item.id == id);
+
+  if (item) {
+    // Verifica se há quantidade suficiente em estoque
+    if (item.qtde_estoque >= quantidade) {
+      // Remove a quantidade especificada do estoque
+      item.qtde_estoque = Math.max(0, item.qtde_estoque - quantidade);
+      return true; // Operação bem-sucedida
+    } else {
+      return false; // Quantidade em estoque insuficiente
+    }
+  } else {
+    return false; // Item não encontrado no estoque
+  }
+}
+
+
+function adicionarAoEstoque(id, quantidade) {
+  const item = Object.values(estoque)
+    .flat()
+    .find(item => item.id == id);
+
+  if (item) {
+    // Adiciona a quantidade especificada ao estoque
+    item.qtde_estoque += quantidade;
+    return true; // Operação bem-sucedida
+  } else {
+    return false; // Item não encontrado no estoque
+  }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  carrega_carrossel_pedidos()
+  gera_pedidos()
+  limpa_localStorage()
+})
+
+const limpa_localStorage=()=>{
+  localStorage.removeItem('itens_pedidos');
+}
+
+
+const abrir_modal_gera_pedidos = (element)=>{
+  var dataId = element.getAttribute("data-id");
 
   gera_linhas_produtos(dataId)
 
-  var myModal = new bootstrap.Modal(document.getElementById('modal_gera_pedidos'));
-  myModal.show();
-}
-
-const abrir_modal_gera_pedidos = ()=>{
   var myModal = new bootstrap.Modal(document.getElementById('modal_gera_pedidos'));
   myModal.show();
 }
@@ -83,12 +129,12 @@ const adiciona_qtde = (elemento)=>{
 }
 
 const obterItemPorIdECategoria=(categoria, categoriaId)=> {
-  if (json_categorias[categoria]) {
-      const itens = json_categorias[categoria];
+  if (estoque[categoria]) {
+      const itens = estoque[categoria];
       const itemEncontrado = itens.find(item => item.id == categoriaId);
 
       if (itemEncontrado) {
-          console.log(`Item encontrado na categoria ${categoria}:`, itemEncontrado);
+          // console.log(`Item encontrado na categoria ${categoria}:`, itemEncontrado);
           return itemEncontrado
       } else {
           console.log(`Item com ID ${categoriaId} não encontrado na categoria ${categoria}.`);
@@ -100,35 +146,58 @@ const obterItemPorIdECategoria=(categoria, categoriaId)=> {
 
 var itens_pedidos = []
 
-// Função para adicionar um item ao array ou somar a quantidade se já existir
-function adicionarOuSomarQuantidade(item) {
-  const index = itens_pedidos.findIndex(i => i.id === item.id);
-
-
-  if (index !== -1) {
-    let atual = parseInt(itens_pedidos[index].qtde)
-    let novo_valor = parseInt(item.qtde)
-    // O item já existe no array, então somamos a quantidade
-    itens_pedidos[index].qtde = atual + novo_valor;
-    
-  } else {
-    // O item não existe, então adicionamos ao array
-    itens_pedidos.push(item);
-  }
-}
-
-// Exemplo de uso na função gera_tabela_pedido
-const gera_tabela_pedido = (elemento) => {
-  var dataId = elemento.getAttribute("data-id");
-  var dataCategoria = elemento.getAttribute("data-categoria");
-  let qtde = document.getElementById("inpt_qtde" + dataId);
-  let item = obterItemPorIdECategoria(dataCategoria, dataId);
-  item['qtde'] = qtde.value;
-  const index = itens_pedidos.findIndex(i => i.id === item.id);
-
-  adicionarOuSomarQuantidade(item);
-  popula_tabela_pedidos(itens_pedidos);
+// Função para obter a quantidade em estoque de um item
+const obterQuantidadeEmEstoque = (id) => {
+  return consultarEstoque(id);
 };
+
+// Função para adicionar um item ao array de pedidos
+const adicionarItemAoPedido = (pedidoArray, novoItem) => {
+  const itemExistente = pedidoArray.find(item => item.id === novoItem.id && item.categoria === novoItem.categoria);
+
+  if (itemExistente) {
+    // Se o item já existe, adiciona a quantidade ao item existente
+    itemExistente.qtde += novoItem.qtde;
+  } else {
+    // Se o item não existe, adiciona o novo item ao array
+    pedidoArray.push(novoItem);
+  }
+};
+
+// Função para atualizar o localStorage com os itens de pedido
+const atualizarLocalStorage = (pedidoArray) => {
+  localStorage.setItem('itens_pedidos', JSON.stringify(pedidoArray));
+};
+
+// Função principal para gerar a tabela de pedidos
+const gera_tabela_pedido = async (elemento) => {
+  const dataId = elemento.getAttribute("data-id");
+  const dataCategoria = elemento.getAttribute("data-categoria");
+  const qtdeInput = document.getElementById("inpt_qtde" + dataId);
+  const item = obterItemPorIdECategoria(dataCategoria, dataId);
+  const qtdeEmEstoque = obterQuantidadeEmEstoque(dataId);
+
+  item.qtde = parseInt(qtdeInput.value);
+
+  // Obtém os itens já pedidos do localStorage
+  let itensPedidosLocalStorage = JSON.parse(localStorage.getItem('itens_pedidos')) || [];
+
+  if (parseFloat(qtdeInput.value)<=qtdeEmEstoque){
+  // Adiciona o item ao array de pedidos
+
+    adicionarItemAoPedido(itensPedidosLocalStorage, item);
+    removerDoEstoque(dataId,parseFloat(qtdeInput.value))
+    console.log(consultarEstoque(dataId))
+  }else {
+    alert('estoque menor pedido')
+  }
+  // Atualiza o localStorage com os itens de pedido
+  atualizarLocalStorage(itensPedidosLocalStorage);
+
+  // Popula a tabela de pedidos
+  popula_tabela_pedidos(itensPedidosLocalStorage);
+};
+
 
 const popula_tabela_pedidos =(pedidos)=>{
   const tabelaCorpo = document.getElementById('tbody_itens_pedido');
@@ -158,8 +227,7 @@ const popula_tabela_pedidos =(pedidos)=>{
 
 const gera_linhas_produtos = (categoria)=>{
   let linha_categoria_ped = ''
-  console.log(json_categorias)
-  json_categorias[categoria].forEach(element => {
+  estoque[categoria].forEach(element => {
     linha_categoria_ped += `                  
     <div class="col-4 ms-auto pl-4" >
       <h7 class="qtde_produtos">${element.descricao}</h7>
