@@ -1,47 +1,4 @@
-const carrega_carrossel_pedidos=()=>{
-  $('.carrossel_categorias').slick({
-    centerMode: true,
-    centerPadding: '20px',
-    slidesToShow: 5,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 3
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 1
-        }
-      }
-    ]
-  });
-}
-
-let estoque = {'cervejas':[{'id':1,'qtde_estoque':45,'descricao':'Corona 600 ml','preco':30.00},
-                {'id':2,'qtde_estoque':45,'descricao':'Amstel 600 ml','preco':30.00},
-                {'id':3,'qtde_estoque':45,'descricao':'Heineken 600 ml','preco':30.00},
-                {'id':4,'qtde_estoque':45,'descricao':'Budweiser 600 ml','preco':30.00},
-                {'id':5,'qtde_estoque':45,'descricao':'Brahma 600 ml','preco':30.00},
-                {'id':6,'qtde_estoque':45,'descricao':'Imperio 600 ml','preco':30.00},
-                {'id':7,'qtde_estoque':45,'descricao':'Eisenbahn','preco':30.00},
-                {'id':8,'qtde_estoque':45,'descricao':'Skol 600 ml','preco':30.00}],
-              'pizzas':[{'id':9,'qtde_estoque':45,'descricao':'Calabresa','preco':30.00},
-              {'id':10,'qtde_estoque':45,'descricao':'Mussarela','preco':30.00},
-              {'id':11,'qtde_estoque':45,'descricao':'Frango com Bacon','preco':30.00},
-              {'id':12,'qtde_estoque':45,'descricao':'Baiana','preco':30.00},
-              {'id':13,'qtde_estoque':45,'descricao':'Portuguesa','preco':30.00},
-              {'id':14,'qtde_estoque':45,'descricao':'Atum','preco':30.00},
-              {'id':15,'qtde_estoque':45,'descricao':'Frango com Catupiry','preco':30.00},
-              {'id':16,'qtde_estoque':45,'descricao':'Calabresa c/ Queijo','preco':30.00}]}
+let estoque = retorna_estoque()
 
 const consultarEstoque = (id) => {
   // Procura o item com o ID correspondente em todas as categorias
@@ -93,7 +50,6 @@ function adicionarAoEstoque(id, quantidade) {
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  carrega_carrossel_pedidos()
   gera_pedidos()
   limpa_localStorage()
 })

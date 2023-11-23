@@ -34,7 +34,7 @@ function gerarBlocosHTML(lista) {
   // Função para redirecionar para outra página com o código como parâmetro
   function redirecionarParaOutraPagina(codigo) {
     // Substitua 'outra_pagina.html' pela URL da sua outra página
-    window.location.href = `pedidos.html?mesa=${codigo}`;
+    window.location.href = `atendimento.html?mesa=${codigo}`;
   }
 
   // Exemplo de dicionário
