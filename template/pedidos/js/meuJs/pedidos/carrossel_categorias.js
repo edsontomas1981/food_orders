@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 const gera_carrossel_pedidos = (estoque) =>{
     const divCarrosselCategorias = document.getElementById('div_carrossel_categorias');
-
     for (const categoria in estoque) {
         if (estoque.hasOwnProperty(categoria)) {
             const card = document.createElement('div');

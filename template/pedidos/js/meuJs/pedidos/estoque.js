@@ -1,56 +1,56 @@
 class Estoque {
     constructor() {
         this.estoque = {
-            'Bebidas': [
+            'bebidas': [
             {'id': 1, 'qtde_estoque': 45, 'descricao': 'Coca-Cola', 'preco': 3.00},
             {'id': 2, 'qtde_estoque': 45, 'descricao': 'Pepsi', 'preco': 2.50},
             {'id': 3, 'qtde_estoque': 45, 'descricao': 'Guaraná', 'preco': 2.00},
             {'id': 4, 'qtde_estoque': 45, 'descricao': 'Suco de Laranja', 'preco': 4.00},
             {'id': 5, 'qtde_estoque': 45, 'descricao': 'Água Mineral', 'preco': 1.50}
         ],
-        'Pizzas': [
+        'pizzas': [
             {'id': 6, 'qtde_estoque': 45, 'descricao': 'Calabresa', 'preco': 25.00},
             {'id': 7, 'qtde_estoque': 45, 'descricao': 'Margherita', 'preco': 28.00},
             {'id': 8, 'qtde_estoque': 45, 'descricao': 'Frango com Catupiry', 'preco': 30.00},
             {'id': 9, 'qtde_estoque': 45, 'descricao': 'Quatro Queijos', 'preco': 26.00},
             {'id': 10, 'qtde_estoque': 45, 'descricao': 'Vegetariana', 'preco': 27.00}
         ],
-        'Sanduiches': [
+        'sanduiches': [
             {'id': 11, 'qtde_estoque': 45, 'descricao': 'Cheeseburger', 'preco': 15.00},
             {'id': 12, 'qtde_estoque': 45, 'descricao': 'X-Bacon', 'preco': 18.00},
             {'id': 13, 'qtde_estoque': 45, 'descricao': 'Frango Grelhado', 'preco': 16.00},
             {'id': 14, 'qtde_estoque': 45, 'descricao': 'Vegetariano', 'preco': 17.00},
             {'id': 15, 'qtde_estoque': 45, 'descricao': 'Atum com Maionese', 'preco': 20.00}
         ],
-        'Sobremesas': [
+        'sobremesas': [
             {'id': 16, 'qtde_estoque': 45, 'descricao': 'Pudim', 'preco': 8.00},
             {'id': 17, 'qtde_estoque': 45, 'descricao': 'Sorvete de Chocolate', 'preco': 10.00},
             {'id': 18, 'qtde_estoque': 45, 'descricao': 'Cheesecake', 'preco': 12.00},
             {'id': 19, 'qtde_estoque': 45, 'descricao': 'Mousse de Maracujá', 'preco': 9.00},
             {'id': 20, 'qtde_estoque': 45, 'descricao': 'Torta de Limão', 'preco': 11.00}
         ],
-        'Pratos Quentes': [
+        'pratos_quentes': [
             {'id': 21, 'qtde_estoque': 45, 'descricao': 'Feijoada', 'preco': 30.00},
             {'id': 22, 'qtde_estoque': 45, 'descricao': 'Strogonoff de Frango', 'preco': 25.00},
             {'id': 23, 'qtde_estoque': 45, 'descricao': 'Risoto de Funghi', 'preco': 28.00},
             {'id': 24, 'qtde_estoque': 45, 'descricao': 'Nhoque ao Molho Bolonhesa', 'preco': 26.00},
             {'id': 25, 'qtde_estoque': 45, 'descricao': 'Lasanha de Carne', 'preco': 27.00}
         ],
-        'Saladas': [
+        'saladas': [
             {'id': 26, 'qtde_estoque': 45, 'descricao': 'Salada Caesar', 'preco': 15.00},
             {'id': 27, 'qtde_estoque': 45, 'descricao': 'Salada Caprese', 'preco': 18.00},
             {'id': 28, 'qtde_estoque': 45, 'descricao': 'Salada de Frutas', 'preco': 10.00},
             {'id': 29, 'qtde_estoque': 45, 'descricao': 'Salada Grega', 'preco': 12.00},
             {'id': 30, 'qtde_estoque': 45, 'descricao': 'Salada de Camarão', 'preco': 20.00}
         ],
-        'Bebidas Alcoólicas': [
+        'bebidas_alcoolicas': [
             {'id': 31, 'qtde_estoque': 45, 'descricao': 'Caipirinha', 'preco': 12.00},
             {'id': 32, 'qtde_estoque': 45, 'descricao': 'Margarita', 'preco': 14.00},
             {'id': 33, 'qtde_estoque': 45, 'descricao': 'Cerveja Artesanal IPA', 'preco': 18.00},
             {'id': 34, 'qtde_estoque': 45, 'descricao': 'Vinho Tinto Seco', 'preco': 25.00},
             {'id': 35, 'qtde_estoque': 45, 'descricao': 'Whisky 12 anos', 'preco': 30.00}
         ],
-        'Massas': [
+        'massas': [
             {'id': 36, 'qtde_estoque': 45, 'descricao': 'Espaguete à Bolonhesa', 'preco': 20.00},
             {'id': 37, 'qtde_estoque': 45, 'descricao': 'Fettuccine Alfredo', 'preco': 22.00},
             {'id': 38, 'qtde_estoque': 45, 'descricao': 'Ravioli de Queijo', 'preco': 18.00},
@@ -67,9 +67,9 @@ class Estoque {
         }
     }
 
-    salvaEstoqueLocalStorage() {
+    salvaEstoqueLocalStorage(novo_estoque) {
         const estoqueString = JSON.stringify(this.recuperaEstoqueLocalStorage());
-        localStorage.setItem('estoque', estoqueString);
+        localStorage.setItem('estoque', novo_estoque);
     }
 
     recuperaEstoqueLocalStorage() {
@@ -136,8 +136,10 @@ class Estoque {
 
 const retorna_estoque = ()=>{
     const estoqueObj = new Estoque();
-    return estoqueObj.recuperaEstoqueLocalStorage()
+    return estoqueObj.estoque
 }
+
+
 
 class Item {
     constructor() {

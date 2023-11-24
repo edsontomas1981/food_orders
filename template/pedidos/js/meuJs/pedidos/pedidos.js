@@ -1,8 +1,8 @@
-let estoque = retorna_estoque()
+let obj_estoque = new Estoque;
 
 const consultarEstoque = (id) => {
   // Procura o item com o ID correspondente em todas as categorias
-  const itemEncontrado = Object.values(estoque)
+  const itemEncontrado = Object.values(obj_estoque.estoque)
     .flat()
     .find(item => item.id == id);
 
@@ -16,7 +16,7 @@ const consultarEstoque = (id) => {
 
 function removerDoEstoque(id, quantidade) {
   // Procura o item com o ID correspondente em todas as categorias
-  const item = Object.values(estoque)
+  const item = Object.values(obj_estoque.estoque)
     .flat()
     .find(item => item.id == id);
 
@@ -25,6 +25,7 @@ function removerDoEstoque(id, quantidade) {
     if (item.qtde_estoque >= quantidade) {
       // Remove a quantidade especificada do estoque
       item.qtde_estoque = Math.max(0, item.qtde_estoque - quantidade);
+      obj_estoque.salvaEstoqueLocalStorage(obj_estoque.estoque)
       return true; // Operação bem-sucedida
     } else {
       return false; // Quantidade em estoque insuficiente
@@ -34,15 +35,15 @@ function removerDoEstoque(id, quantidade) {
   }
 }
 
-
 function adicionarAoEstoque(id, quantidade) {
-  const item = Object.values(estoque)
+  const item = Object.values(obj_estoque.estoque)
     .flat()
     .find(item => item.id == id);
 
   if (item) {
     // Adiciona a quantidade especificada ao estoque
     item.qtde_estoque += quantidade;
+    obj_estoque.salvaEstoqueLocalStorage(obj_estoque.estoque)
     return true; // Operação bem-sucedida
   } else {
     return false; // Item não encontrado no estoque
@@ -52,10 +53,13 @@ function adicionarAoEstoque(id, quantidade) {
 document.addEventListener('DOMContentLoaded',()=>{
   gera_pedidos()
   limpa_localStorage()
+  obj_estoque.criaEstoque()
 })
 
 const limpa_localStorage=()=>{
   localStorage.removeItem('itens_pedidos');
+  localStorage.removeItem('estoque');
+
 }
 
 
@@ -68,7 +72,7 @@ const abrir_modal_gera_pedidos = (element)=>{
   myModal.show();
 }
 
-const subtrai_qtde = (elemento)=>{
+const btn_subtrai_qtde = (elemento)=>{
   var dataId = elemento.getAttribute("data-id");
   let qtde = document.getElementById("inpt_qtde"+dataId)
 
@@ -77,7 +81,7 @@ const subtrai_qtde = (elemento)=>{
   }
 }
 
-const adiciona_qtde = (elemento)=>{
+const btn_add_qtde = (elemento)=>{
   var dataId = elemento.getAttribute("data-id");
   let qtde = document.getElementById("inpt_qtde"+dataId)
   qtde.value = 1 + parseInt(qtde.value)
@@ -85,8 +89,8 @@ const adiciona_qtde = (elemento)=>{
 }
 
 const obterItemPorIdECategoria=(categoria, categoriaId)=> {
-  if (estoque[categoria]) {
-      const itens = estoque[categoria];
+  if (obj_estoque.estoque[categoria]) {
+      const itens = obj_estoque.estoque[categoria];
       const itemEncontrado = itens.find(item => item.id == categoriaId);
 
       if (itemEncontrado) {
@@ -119,7 +123,6 @@ const adicionarItemAoPedido = (pedidoArray, novoItem) => {
     pedidoArray.push(novoItem);
   }
 };
-
 // Função para atualizar o localStorage com os itens de pedido
 const atualizarLocalStorage = (pedidoArray) => {
   localStorage.setItem('itens_pedidos', JSON.stringify(pedidoArray));
@@ -133,25 +136,29 @@ const gera_tabela_pedido = async (elemento) => {
   const item = obterItemPorIdECategoria(dataCategoria, dataId);
   const qtdeEmEstoque = obterQuantidadeEmEstoque(dataId);
 
-  item.qtde = parseInt(qtdeInput.value);
+  if (qtdeInput.value >0){
+
+    item.qtde = parseInt(qtdeInput.value);
 
   // Obtém os itens já pedidos do localStorage
-  let itensPedidosLocalStorage = JSON.parse(localStorage.getItem('itens_pedidos')) || [];
+    let itensPedidosLocalStorage = JSON.parse(localStorage.getItem('itens_pedidos')) || [];
 
-  if (parseFloat(qtdeInput.value)<=qtdeEmEstoque){
-  // Adiciona o item ao array de pedidos
+    if (parseFloat(qtdeInput.value)<=qtdeEmEstoque){
+    // Adiciona o item ao array de pedidos
 
-    adicionarItemAoPedido(itensPedidosLocalStorage, item);
-    removerDoEstoque(dataId,parseFloat(qtdeInput.value))
-    console.log(consultarEstoque(dataId))
-  }else {
-    alert('estoque menor pedido')
-  }
-  // Atualiza o localStorage com os itens de pedido
-  atualizarLocalStorage(itensPedidosLocalStorage);
+      adicionarItemAoPedido(itensPedidosLocalStorage, item);
+      removerDoEstoque(dataId,parseFloat(qtdeInput.value))
+    }else {
+      msgAviso(`A quantidade do pedido excede o estoque disponível (${qtdeEmEstoque}). Por favor, ajuste sua seleção.`)
+    }
+    // Atualiza o localStorage com os itens de pedido
+    atualizarLocalStorage(itensPedidosLocalStorage);
 
-  // Popula a tabela de pedidos
-  popula_tabela_pedidos(itensPedidosLocalStorage);
+    // Popula a tabela de pedidos
+    popula_tabela_pedidos(itensPedidosLocalStorage);
+  }else{
+  msgAviso('A quantidade do pedido deve ser um número positivo.')  
+}
 };
 
 
@@ -163,8 +170,8 @@ const popula_tabela_pedidos =(pedidos)=>{
       const newRow = tabelaCorpo.insertRow();
       const cellId = newRow.insertCell(0);
       const cellDescricao = newRow.insertCell(1);
-      const cellPrecoUnitario = newRow.insertCell(2);
-      const cellQuantidade = newRow.insertCell(3);
+      const cellQuantidade = newRow.insertCell(2);
+      const cellPrecoUnitario = newRow.insertCell(3);
       const cellPrecoTotal = newRow.insertCell(4);
       const cellBotaoMenos = newRow.insertCell(5);
       const cellBotaoMais = newRow.insertCell(6);
@@ -173,9 +180,9 @@ const popula_tabela_pedidos =(pedidos)=>{
       cellDescricao.textContent = item.descricao;
       cellPrecoUnitario.textContent = item.preco.toFixed(2);
       cellQuantidade.textContent = item.qtde;
-      cellPrecoTotal.textContent = ''; // Preencher conforme necessário
+      cellPrecoTotal.textContent = (parseFloat(item.preco.toFixed(2))*parseFloat(item.qtde)).toFixed(2); // Preencher conforme necessário
       cellBotaoMenos.innerHTML = '<button type="button" class="btn btn-outline-danger btn-qtde-produtos"><i class="fa fa-minus" aria-hidden="true"></i></button>';
-      cellBotaoMais.innerHTML = ''; // Preencher conforme necessário
+      // cellBotaoMais.innerHTML = ''; // Preencher conforme necessário
   });
   
 }
@@ -183,17 +190,17 @@ const popula_tabela_pedidos =(pedidos)=>{
 
 const gera_linhas_produtos = (categoria)=>{
   let linha_categoria_ped = ''
-  estoque[categoria].forEach(element => {
+  obj_estoque.estoque[categoria].forEach(element => {
     linha_categoria_ped += `                  
     <div class="col-4 ms-auto pl-4" >
       <h7 class="qtde_produtos">${element.descricao}</h7>
     </div>
     <div class="col-5 ms-auto">
       <div class="input-group mb-3">
-        <button type="button" class="btn btn-outline-danger btn-qtde-produtos" data-id="${element.id}" onclick="subtrai_qtde(this)"><i class="fa fa-minus" aria-hidden="true"></i>
+        <button type="button" class="btn btn-outline-danger btn-qtde-produtos" data-id="${element.id}" onclick="btn_subtrai_qtde(this)"><i class="fa fa-minus" aria-hidden="true"></i>
         </button>
         <input type="text" class="form-control qtde_produtos" id="inpt_qtde${element.id}" placeholder="Quantidade" value="1">
-        <button type="button" class="btn btn-outline-secondary btn-qtde-produtos" data-id="${element.id}" onclick="adiciona_qtde(this)" ><i class="fa fa-plus" aria-hidden="true"></i>
+        <button type="button" class="btn btn-outline-secondary btn-qtde-produtos" data-id="${element.id}" onclick="btn_add_qtde(this)" ><i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
     </div>
