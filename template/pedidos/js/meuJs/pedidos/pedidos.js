@@ -1,54 +1,8 @@
 let obj_estoque = new Estoque;
+let obj_pedido = new Pedido(5) ;
+let item = new Item ;
 
-const consultarEstoque = (id) => {
-  // Procura o item com o ID correspondente em todas as categorias
-  const itemEncontrado = Object.values(obj_estoque.estoque)
-    .flat()
-    .find(item => item.id == id);
-
-  if (itemEncontrado) {
-    // Retorna a quantidade em estoque do item encontrado
-    return itemEncontrado.qtde_estoque;
-  } else {
-    return 'Item não encontrado no estoque.';
-  }
-};
-
-function removerDoEstoque(id, quantidade) {
-  // Procura o item com o ID correspondente em todas as categorias
-  const item = Object.values(obj_estoque.estoque)
-    .flat()
-    .find(item => item.id == id);
-
-  if (item) {
-    // Verifica se há quantidade suficiente em estoque
-    if (item.qtde_estoque >= quantidade) {
-      // Remove a quantidade especificada do estoque
-      item.qtde_estoque = Math.max(0, item.qtde_estoque - quantidade);
-      obj_estoque.salvaEstoqueLocalStorage(obj_estoque.estoque)
-      return true; // Operação bem-sucedida
-    } else {
-      return false; // Quantidade em estoque insuficiente
-    }
-  } else {
-    return false; // Item não encontrado no estoque
-  }
-}
-
-function adicionarAoEstoque(id, quantidade) {
-  const item = Object.values(obj_estoque.estoque)
-    .flat()
-    .find(item => item.id == id);
-
-  if (item) {
-    // Adiciona a quantidade especificada ao estoque
-    item.qtde_estoque += quantidade;
-    obj_estoque.salvaEstoqueLocalStorage(obj_estoque.estoque)
-    return true; // Operação bem-sucedida
-  } else {
-    return false; // Item não encontrado no estoque
-  }
-}
+obj_pedido.iniciarPedido()
 
 document.addEventListener('DOMContentLoaded',()=>{
   gera_pedidos()
@@ -57,54 +11,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 })
 
 const limpa_localStorage=()=>{
-  localStorage.removeItem('itens_pedidos');
-  localStorage.removeItem('estoque');
-
+  localStorage.clear()
 }
-
-
-const abrir_modal_gera_pedidos = (element)=>{
-  var dataId = element.getAttribute("data-id");
-
-  gera_linhas_produtos(dataId)
-
-  var myModal = new bootstrap.Modal(document.getElementById('modal_gera_pedidos'));
-  myModal.show();
-}
-
-const btn_subtrai_qtde = (elemento)=>{
-  var dataId = elemento.getAttribute("data-id");
-  let qtde = document.getElementById("inpt_qtde"+dataId)
-
-  if(parseInt(qtde.value)>0){
-    qtde.value-=1
-  }
-}
-
-const btn_add_qtde = (elemento)=>{
-  var dataId = elemento.getAttribute("data-id");
-  let qtde = document.getElementById("inpt_qtde"+dataId)
-  qtde.value = 1 + parseInt(qtde.value)
-  
-}
-
-const obterItemPorIdECategoria=(categoria, categoriaId)=> {
-  if (obj_estoque.estoque[categoria]) {
-      const itens = obj_estoque.estoque[categoria];
-      const itemEncontrado = itens.find(item => item.id == categoriaId);
-
-      if (itemEncontrado) {
-          // console.log(`Item encontrado na categoria ${categoria}:`, itemEncontrado);
-          return itemEncontrado
-      } else {
-          console.log(`Item com ID ${categoriaId} não encontrado na categoria ${categoria}.`);
-      }
-  } else {
-      console.log(`Categoria ${categoria} não encontrada.`);
-  }
-}
-
-var itens_pedidos = []
 
 // Função para obter a quantidade em estoque de um item
 const obterQuantidadeEmEstoque = (id) => {
@@ -112,16 +20,25 @@ const obterQuantidadeEmEstoque = (id) => {
 };
 
 // Função para adicionar um item ao array de pedidos
-const adicionarItemAoPedido = (pedidoArray, novoItem) => {
-  const itemExistente = pedidoArray.find(item => item.id === novoItem.id && item.categoria === novoItem.categoria);
+const adicionarItemAoPedido = async(novoItem) => {
+  let response =  await obj_pedido.adicionarItem(novoItem.id,novoItem.qtde)
 
-  if (itemExistente) {
-    // Se o item já existe, adiciona a quantidade ao item existente
-    itemExistente.qtde += novoItem.qtde;
-  } else {
-    // Se o item não existe, adiciona o novo item ao array
-    pedidoArray.push(novoItem);
+  switch (response) {
+    case 1:
+      msgInfo(`"${novoItem.descricao}" foi adicionado ao pedido. Quantidade: ${novoItem.qtde}`);
+      popula_subtotal(obj_pedido.subtotal)
+      obj_estoque.alterarQuantidadeItem(novoItem.id,-novoItem.qtde)
+      obj_estoque.salvaEstoqueLocalStorage()
+      break;
+
+    case 2:
+        msgInfo(`"${novoItem.descricao}" foi adicionado ao pedido. Quantidade: ${novoItem.qtde}`);
+        break;
+  
+    default:
+      break;
   }
+
 };
 // Função para atualizar o localStorage com os itens de pedido
 const atualizarLocalStorage = (pedidoArray) => {
@@ -137,32 +54,38 @@ const gera_tabela_pedido = async (elemento) => {
   const qtdeEmEstoque = obterQuantidadeEmEstoque(dataId);
 
   if (qtdeInput.value >0){
-
     item.qtde = parseInt(qtdeInput.value);
 
-  // Obtém os itens já pedidos do localStorage
-    let itensPedidosLocalStorage = JSON.parse(localStorage.getItem('itens_pedidos')) || [];
-
     if (parseFloat(qtdeInput.value)<=qtdeEmEstoque){
-    // Adiciona o item ao array de pedidos
+      // Adiciona o item ao array de pedidos
+      adicionarItemAoPedido(item);
 
-      adicionarItemAoPedido(itensPedidosLocalStorage, item);
-      removerDoEstoque(dataId,parseFloat(qtdeInput.value))
     }else {
       msgAviso(`A quantidade do pedido excede o estoque disponível (${qtdeEmEstoque}). Por favor, ajuste sua seleção.`)
     }
-    // Atualiza o localStorage com os itens de pedido
-    atualizarLocalStorage(itensPedidosLocalStorage);
-
     // Popula a tabela de pedidos
-    popula_tabela_pedidos(itensPedidosLocalStorage);
-  }else{
-  msgAviso('A quantidade do pedido deve ser um número positivo.')  
-}
+    popula_tabela_pedidos(obj_pedido.itens);
+    }else{
+      msgAviso('A quantidade do pedido deve ser um número positivo.')  
+    }
 };
 
+const remove_tbody_pedidos=(element)=>{
+  const dataId = element.getAttribute("data-id");
+  obj_pedido.removerItem(dataId)
+  popula_tabela_pedidos(obj_pedido.itens)
+  popula_subtotal(obj_pedido.subtotal)
+}
 
+const popula_subtotal = (subtotal)=>{
+  const td_subtotal = document.getElementById('subtotal')
+  td_subtotal.textContent ='R$ ' + parseFloat(subtotal).toFixed(2)
+  console.log(obj_pedido)
+}
+
+70
 const popula_tabela_pedidos =(pedidos)=>{
+  console.log(pedidos)
   const tabelaCorpo = document.getElementById('tbody_itens_pedido');
   tabelaCorpo.innerHTML = ''; // Limpar o conteúdo atual
 
@@ -176,17 +99,19 @@ const popula_tabela_pedidos =(pedidos)=>{
       const cellBotaoMenos = newRow.insertCell(5);
       const cellBotaoMais = newRow.insertCell(6);
 
-      cellId.textContent = item.id;
-      cellDescricao.textContent = item.descricao;
-      cellPrecoUnitario.textContent = item.preco.toFixed(2);
-      cellQuantidade.textContent = item.qtde;
-      cellPrecoTotal.textContent = (parseFloat(item.preco.toFixed(2))*parseFloat(item.qtde)).toFixed(2); // Preencher conforme necessário
-      cellBotaoMenos.innerHTML = '<button type="button" class="btn btn-outline-danger btn-qtde-produtos"><i class="fa fa-minus" aria-hidden="true"></i></button>';
+      cellId.textContent = item.produto.id;
+      cellDescricao.textContent = item.produto.descricao;
+      cellPrecoUnitario.textContent = parseFloat(item.produto.preco).toFixed(2);
+      cellQuantidade.textContent = item.quantidade;
+      cellPrecoTotal.textContent =(parseFloat(item.produto.preco).toFixed(2)*parseFloat(item.quantidade).toFixed(2)); // Preencher conforme necessário
+      cellBotaoMenos.innerHTML = `<button type="button" data-id="${item.produto.id}" data-categoria="${item.produto.categoria}" class="btn btn-outline-danger btn-qtde-produtos" onclick="remove_tbody_pedidos(this)"><i class="fa fa-minus" aria-hidden="true"></i></button>`;
       // cellBotaoMais.innerHTML = ''; // Preencher conforme necessário
+
+      cellId.classList.add('d-none', 'd-sm-table-cell', 'sua-classe-id');
+      cellPrecoUnitario.classList.add('d-none', 'd-sm-table-cell', 'sua-classe-preco-unitario');
   });
   
 }
-
 
 const gera_linhas_produtos = (categoria)=>{
   let linha_categoria_ped = ''
@@ -240,3 +165,6 @@ const gera_pedidos = ()=>{
     `
   }
 
+  const impressao = ()=>{
+    obj_pedido.imprimirPedido()
+  }

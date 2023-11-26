@@ -20,6 +20,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/meuCss/estilo.css"/>
+
   </head>
   <body>
 		
@@ -37,18 +39,15 @@
               <tr>
                 <th scope="col" class="d-none d-sm-table-cell">Id</th>
                 <th scope="col">Descrição</th>
-                <th scope="col">Quantidade</th>
+                <th scope="col">Qtde</th>
                 <th scope="col" class="d-none d-sm-table-cell">Preço Unitário</th>
-                <th scope="col">Preço Total</th>
-                <th scope="col"></th>
+                <th scope="col">Total</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody id="tbody_itens_pedido">
-              </tr>
             </tbody>
           </table>      
-          <button id="teste" class="btn btn-primary" >OK</button>
         </div>
       </div>
       <div id="div_modal_pedidos" ></div>
@@ -56,16 +55,11 @@
         <table class="table mt-3 ml-3 mr-3 ">
           <thead>
             <tr>
-              <th scope="col">Parcial</th>
-              <th scope="col">Geral</th>
-            </tr>
-            <tr>
-              <td>R$ 35,50</td>
-              <td>R$ 35,50</td>
+              <td id="subtotal">R$ 0,00</td>
+              <td id="fechar_mesa" onclick="impressao()">Fechar Mesa</td>
             </tr>
           </thead>
           <tbody id="tbody_itens_pedido">
-            </tr>
           </tbody>
         </table>  
       </div>
@@ -73,15 +67,18 @@
 		</div>
     <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="./js/jquery-migrate-1.2.1.min.js"></script> 
-    <script src="./js/meuJs/pedidos/estoque.js"></script>
+    <script src="./js/meuJs/pedidos/Classe_Estoque.js"></script>
+    <script src="./js/meuJs/pedidos/Classe_Pedidos.js"></script>
+    <script src="./js/meuJs/pedidos/Classe_Item.js"></script>
     <script src="./js/meuJs/pedidos/carrossel_categorias.js"></script>
     <script src="./js/meuJs/pedidos/pedidos.js"></script>
+    <script src="./js/meuJs/pedidos/modal_pedidos.js"></script>
 
     <script src="./js/popper.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/meuJs/utils/menu.js"></script>
-    <script src="./js/meuJs/utils/alertas.js"
+    <script src="./js/meuJs/utils/alertas.js"></script>
     <script src="./js/meuJs/utils/popula_tbody.js"></script>
     <script type="text/javascript" src="./js/slick/slick.min.js"></script>
   </body>

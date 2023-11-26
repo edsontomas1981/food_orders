@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 const gera_menu = ()=>{
     var div_sidebar = document.getElementById("sidebar");
       div_sidebar.innerHTML = `
-      <div class="custom-menu">
-        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+
+      <div class="custom-menu fab">
+        <button type="button" id="sidebarCollapse" class="bg-primary" >
         <i class="fa fa-bars"></i>
         <span class="sr-only">Toggle Menu</span>
         </button>

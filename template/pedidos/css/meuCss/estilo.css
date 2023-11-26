@@ -1,3 +1,7 @@
+body{
+  background-color:#fff ;
+}
+
 .campo-erro {
     border: 1px solid #ff0000; /* Cor vermelha */
     background-color: #ffeeee; /* Cor de fundo de destaque */
@@ -6,6 +10,10 @@
 
   .linha{
     size: 150px;
+  }
+
+  #fechar_mesa{
+    cursor: pointer;
   }
 
   .qtde_produtos{
@@ -17,31 +25,65 @@
     max-height: 40px;
   }
 
+  .etste{
+    background-color: cyan;
+  }
+
+  .fab_impressao{
+    position: fixed;
+    bottom:50px;
+    right:60%;
+    z-index: 1001;
+
+  }
+
+   
+  .fab_impressao button{
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 30px;
+    background-color: #cb60b3;
+    border: none;
+    box-shadow: 0 1px 5px rgba(0,0,0,.4);
+    font-size: 24px;
+    color: white;
+      
+    -webkit-transition: .2s ease-out;
+    -moz-transition: .2s ease-out;
+    transition: .2s ease-out;
+  }
+  
+
+  .capitalizado {
+    text-transform: capitalize;
+    font-size: larger;
+    font-weight: bold;
+    /* color:black; */
+  }
 
   .floating-buttons {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    /* box-shadow: 1px 1px 1px 1px rgba(0.2, 0.2, 0.2, 0.2); */
-    /* border-radius: 10px; */
   }
 
-.floating-buttons table {
-    background-color: #007bff;
+  .floating-buttons table {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+  }
+
+  .floating-buttons table td {
+    background-color: #17a2b8;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
-}
-
-.floating-buttons table td {
-  background-color: #17a2b8;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
+  }
 
   .btn-qtde-produtos{
     max-width: 40px;
@@ -72,8 +114,6 @@
   }
 
   .car-categoria{
-    /* width: fit-content;
-    height: fit-content; */
     margin: 1px;
     max-width: 540px;
     white-space: nowrap; /* Impede que o conteúdo seja quebrado em várias linhas */
@@ -94,6 +134,26 @@
     /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
   }
 
+  .fab {
+    position: fixed;
+    top: 3%;
+    /* left: 20%; */
+    z-index: 1000;
+  }
+
+  .fab button{
+    cursor: pointer;
+    width: 48px;
+    height: 48px;
+    border-radius: 30px;
+    background-color: #cb60b3;
+    border: none;
+    box-shadow: 0 1px 5px rgba(0,0,0,.4);
+    font-size: 24px;
+    color: white;
+  }
+
+
   .scrollable-div {
     overflow-x: auto;
     white-space: nowrap; /* Evita que o conteúdo quebre em várias linhas */
@@ -110,6 +170,7 @@
     padding-left: 10%;
     padding-right: 10%;
   }
+
 
   .rodape{
     padding: 10%;

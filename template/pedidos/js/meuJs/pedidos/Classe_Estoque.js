@@ -43,7 +43,7 @@ class Estoque {
             {'id': 29, 'qtde_estoque': 45, 'descricao': 'Salada Grega', 'preco': 12.00},
             {'id': 30, 'qtde_estoque': 45, 'descricao': 'Salada de Camarão', 'preco': 20.00}
         ],
-        'bebidas_alcoolicas': [
+        'bebidas_alcoólicas': [
             {'id': 31, 'qtde_estoque': 45, 'descricao': 'Caipirinha', 'preco': 12.00},
             {'id': 32, 'qtde_estoque': 45, 'descricao': 'Margarita', 'preco': 14.00},
             {'id': 33, 'qtde_estoque': 45, 'descricao': 'Cerveja Artesanal IPA', 'preco': 18.00},
@@ -123,13 +123,15 @@ class Estoque {
     }
 
     alterarQuantidadeItem(itemId, quantidade) {
-        // Altera a quantidade do item no estoque
-        if (this.estoque[itemId]) {
-            this.estoque[itemId].qtde_estoque += quantidade;
-            this.salvaEstoqueLocalStorage();
-            console.log(`Quantidade do item ${itemId} alterada para ${this.estoque[itemId].qtde_estoque}`);
-        } else {
-            console.log(`Produto com ID ${itemId} não encontrado no estoque.`);
+        // Procura o item com o ID no estoque e altera a quantidade
+        for (const categoria in this.estoque) {
+            const itemIndex = this.estoque[categoria].findIndex(item => item.id === itemId);
+            if (itemIndex !== -1) {
+                this.estoque[categoria][itemIndex].qtde_estoque += quantidade;
+                this.salvaEstoqueLocalStorage();
+                console.log(`Quantidade do item ${itemId} alterada para ${this.estoque[categoria][itemIndex].qtde_estoque}`);
+                return; // Se encontrar o item, interrompe a busca
+            }
         }
     }
 }
@@ -139,49 +141,69 @@ const retorna_estoque = ()=>{
     return estoqueObj.estoque
 }
 
-
-
-class Item {
-    constructor() {
-        // Inicializa a classe Estoque
-        this.estoque = new Estoque();
+const consultarEstoque = (id) => {
+    // Procura o item com o ID correspondente em todas as categorias
+    const itemEncontrado = Object.values(obj_estoque.estoque)
+      .flat()
+      .find(item => item.id == id);
+  
+    if (itemEncontrado) {
+      // Retorna a quantidade em estoque do item encontrado
+      return itemEncontrado.qtde_estoque;
+    } else {
+      return 'Item não encontrado no estoque.';
     }
-
-    adicionarProduto(novoProduto) {
-        // Adiciona o produto ao estoque
-        this.estoque.adicionarProduto(novoProduto);
+  };
+  
+  function removerDoEstoque(id, quantidade) {
+    // Procura o item com o ID correspondente em todas as categorias
+    const item = Object.values(obj_estoque.estoque)
+      .flat()
+      .find(item => item.id == id);
+  
+    if (item) {
+      // Verifica se há quantidade suficiente em estoque
+      if (item.qtde_estoque >= quantidade) {
+        // Remove a quantidade especificada do estoque
+        item.qtde_estoque = Math.max(0, item.qtde_estoque - quantidade);
+        obj_estoque.salvaEstoqueLocalStorage(obj_estoque.estoque)
+        return true; // Operação bem-sucedida
+      } else {
+        return false; // Quantidade em estoque insuficiente
+      }
+    } else {
+      return false; // Item não encontrado no estoque
     }
-
-    removerProduto(itemId) {
-        // Remove o produto do estoque
-        this.estoque.removerProduto(itemId);
+  }
+  
+  function adicionarAoEstoque(id, quantidade) {
+    const item = Object.values(obj_estoque.estoque)
+      .flat()
+      .find(item => item.id == id);
+  
+    if (item) {
+      // Adiciona a quantidade especificada ao estoque
+      item.qtde_estoque += quantidade;
+      obj_estoque.salvaEstoqueLocalStorage(obj_estoque.estoque)
+      return true; // Operação bem-sucedida
+    } else {
+      return false; // Item não encontrado no estoque
     }
+  }
 
-    aumentarQuantidadeItem(itemId, quantidade) {
-        // Aumenta a quantidade do item no estoque
-        this.estoque.alterarQuantidadeItem(itemId, quantidade);
+  
+  const obterItemPorIdECategoria=(categoria, categoriaId)=> {
+    if (obj_estoque.estoque[categoria]) {
+        const itens = obj_estoque.estoque[categoria];
+        const itemEncontrado = itens.find(item => item.id == categoriaId);
+  
+        if (itemEncontrado) {
+            // console.log(`Item encontrado na categoria ${categoria}:`, itemEncontrado);
+            return itemEncontrado
+        } else {
+            console.log(`Item com ID ${categoriaId} não encontrado na categoria ${categoria}.`);
+        }
+    } else {
+        console.log(`Categoria ${categoria} não encontrada.`);
     }
-
-    diminuirQuantidadeItem(itemId, quantidade) {
-        // Diminui a quantidade do item no estoque
-        this.estoque.alterarQuantidadeItem(itemId, -quantidade);
-    }
-}
-
-document.getElementById('teste').addEventListener('click',()=>{
-    const itemObjeto = new Item();
-
-    // Adicionar um novo produto
-    const novoProduto = { id: 45, qtde_estoque: 10, descricao: 'produtinho', preco: 20.00,'categoria':'Nova Categoria' };
-    itemObjeto.adicionarProduto(novoProduto);
-
-    // Remover um produto
-    itemObjeto.removerProduto(45);
-
-    // Aumentar a quantidade de um item
-    itemObjeto.aumentarQuantidadeItem(2, 5);
-
-    // Diminuir a quantidade de um item
-    itemObjeto.diminuirQuantidadeItem(2, 2);
-})
-
+  }
