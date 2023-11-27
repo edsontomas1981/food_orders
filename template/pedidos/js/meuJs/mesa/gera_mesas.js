@@ -3,17 +3,18 @@ function gerarBlocosHTML(lista) {
 
     lista.forEach(function(item) {
       var blocoHTML = document.createElement("div");
-      blocoHTML.className = "col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6 mb-4 mesa";
+      blocoHTML.className = "col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6 mb-4";
       
       // Adiciona a classe se 'vazia' for falsa
-      const cardBodyClass = item.vazia ? "" : "em-uso";
+      const cardBodyClass = item.vazia ? "" : "bg-warning";
+      console.log(item.vazia)
 
       blocoHTML.innerHTML = `
-        <div class="card ${cardBodyClass}">
-          <div class="card-body ">
+        <div class="card ">
+          <div class="card-body ${cardBodyClass}  ">
             <h7 class="card-title text-info">Mesa nº ${item.codigo}</h7>
             <h7 class="mb-4 token-mesa"> ${item.descricao}</h7>
-            <a href="#" class="btn btn-outline-success btn-sm" onclick="redirecionarParaOutraPagina('${item.codigo}')">View Order</a>
+            <a href="#" class="btn btn-outline-info btn-sm" onclick="redirecionarParaOutraPagina('${item.codigo}')">View Order</a>
           </div>
         </div>
       `;
@@ -40,8 +41,8 @@ function gerarBlocosHTML(lista) {
   // Exemplo de dicionário
   var exemploDicionario = 
     [
-    {"codigo": "1", "descricao": "2597", "progresso": 80,'vazia':false},
-    {"codigo": "2", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "1", "descricao": "", "progresso": 80,'vazia':true},
+    {"codigo": "2", "descricao": "", "progresso": 80,'vazia':false},
     {"codigo": "3", "descricao": "", "progresso": 80,'vazia':true},
     {"codigo": "4", "descricao": "", "progresso": 80,'vazia':true},
     {"codigo": "5", "descricao": "", "progresso": 80,'vazia':true},

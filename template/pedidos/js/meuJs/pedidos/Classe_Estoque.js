@@ -134,6 +134,30 @@ class Estoque {
             }
         }
     }
+
+    buscarItensPorIdSimilar(id) {
+        const idStr = id.toString();
+        const itensSemelhantes = [];
+    
+        // Itera sobre cada tipo na tabela hash
+        for (const tipo in this.estoque) {
+            if (this.estoque.hasOwnProperty(tipo)) {
+                // Filtra os itens com IDs semelhantes no tipo atual
+                const itensDoTipo = this.estoque[tipo].filter(item => {
+                    // Verifica se a string da ID do item contém a string da ID fornecida
+                    return item.id.toString().includes(idStr);
+                });
+    
+                // Adiciona os itens encontrados ao array geral
+                itensSemelhantes.push(...itensDoTipo.map(item => ({ ...item, categoria: tipo })));
+            }
+        }
+    
+        return itensSemelhantes;
+    }
+    
+    
+    
 }
 
 const retorna_estoque = ()=>{

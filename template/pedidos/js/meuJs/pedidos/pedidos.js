@@ -1,18 +1,47 @@
-let obj_estoque = new Estoque;
-let obj_pedido = new Pedido(5) ;
-let item = new Item ;
 
-obj_pedido.iniciarPedido()
+let obj_estoque = new Estoque;
+var obj_pedido = new Pedido ;
+
+
+
+const obterMesaDaURL = () =>{
+  const parametros = new URLSearchParams(window.location.search);
+  return parametros.get('mesa');
+}
 
 document.addEventListener('DOMContentLoaded',()=>{
-  gera_pedidos()
-  limpa_localStorage()
   obj_estoque.criaEstoque()
+  let mesa = obterMesaDaURL()
+  if (mesa !== null) {
+    
+    obj_pedido.iniciarPedido(mesa)
+    popula_tabela_pedidos(obj_pedido.itens)
+    popula_subtotal(obj_pedido.subtotal)
+
+    cria_titulo_mesa(mesa)
+    gera_pedidos();
+    gera_pedidos_codigo_produto();
+    // limpa_localStorage();
+    
+    obj_estoque.criaEstoque();
+    
+    let cod_prod = document.getElementById('codigo_produto');
+    cod_prod.addEventListener('keyup', () => {
+      gera_linhas_produtos_id(obj_estoque.buscarItensPorIdSimilar(cod_prod.value))
+    });
+
+  } else {
+    window.location.href = 'salao.html';
+  }
 })
 
-const limpa_localStorage=()=>{
-  localStorage.clear()
+const cria_titulo_mesa = (mesa)=>{
+  document.getElementById('titulo_pedido').textContent = "Mesa/Comanda : " + mesa
 }
+
+// const limpa_localStorage=()=>{
+//   localStorage.removeItem(estoque)
+// }
 
 // Função para obter a quantidade em estoque de um item
 const obterQuantidadeEmEstoque = (id) => {
@@ -53,6 +82,7 @@ const gera_tabela_pedido = async (elemento) => {
   const item = obterItemPorIdECategoria(dataCategoria, dataId);
   const qtdeEmEstoque = obterQuantidadeEmEstoque(dataId);
 
+
   if (qtdeInput.value >0){
     item.qtde = parseInt(qtdeInput.value);
 
@@ -83,7 +113,6 @@ const popula_subtotal = (subtotal)=>{
   console.log(obj_pedido)
 }
 
-70
 const popula_tabela_pedidos =(pedidos)=>{
   console.log(pedidos)
   const tabelaCorpo = document.getElementById('tbody_itens_pedido');
@@ -110,7 +139,6 @@ const popula_tabela_pedidos =(pedidos)=>{
       cellId.classList.add('d-none', 'd-sm-table-cell', 'sua-classe-id');
       cellPrecoUnitario.classList.add('d-none', 'd-sm-table-cell', 'sua-classe-preco-unitario');
   });
-  
 }
 
 const gera_linhas_produtos = (categoria)=>{
@@ -165,6 +193,68 @@ const gera_pedidos = ()=>{
     `
   }
 
-  const impressao = ()=>{
+  const gera_linhas_produtos_id = (itens) => {
+    console.log(itens)
+    let linha_categoria_ped = '';
+  
+    itens.forEach(element => {
+      linha_categoria_ped += `                  
+      <div class="col-4 ms-auto pl-4" >
+        <h7 class="qtde_produtos">${element.descricao}</h7>
+      </div>
+      <div class="col-5 ms-auto">
+        <div class="input-group mb-3">
+          <button type="button" class="btn btn-outline-danger btn-qtde-produtos" data-id="${element.id}" onclick="btn_subtrai_qtde(this)"><i class="fa fa-minus" aria-hidden="true"></i>
+          </button>
+          <input type="text" class="form-control qtde_produtos" id="inpt_qtde${element.id}" placeholder="Quantidade" value="1">
+          <button type="button" class="btn btn-outline-secondary btn-qtde-produtos" data-id="${element.id}" onclick="btn_add_qtde(this)" ><i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-2 ms-auto">
+        <button class="btn btn-outline-primary" type="button" data-categoria=${element.categoria} data-id="${element.id}" onclick=(gera_tabela_pedido(this))><i class="fa fa-cart-plus" aria-hidden="true"></i>
+        </button>
+      </div>  
+      <div class="col-12">
+      <hr class="linha"/>
+      </div>  
+      `;
+    });
+  
+    var div_pedidos = document.getElementById("linha_produtos_id");
+    div_pedidos.innerHTML = linha_categoria_ped;
+  };
+
+  const gera_pedidos_codigo_produto = ()=>{
+    var div_pedidos_codigo_produto = document.getElementById("div_modal_codigo_produto");
+      div_pedidos_codigo_produto.innerHTML = `
+        <!-- Modal -->
+        <div class="modal fade" id="modal_gera_pedidos_codigo_produtos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen-xxl-down">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Adicionar Produtos</h5>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3 row">
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control-plaintext" id="codigo_produto" placeholder="Digite o código do produto">
+                  </div>
+                </div>
+              <div class="row" id="linha_produtos_id"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    }
+
+    const impressao = ()=>{
+
     obj_pedido.imprimirPedido()
+    localStorage.removeItem('pedido_'+obj_pedido.numeroMesa)
   }

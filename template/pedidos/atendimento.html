@@ -33,6 +33,7 @@
       <div id="content" class="p-4 p-md-5 pt-5">
         <div class="carrossel_categorias" id="div_carrossel_categorias">
         </div>
+        <h4 class="titulo-pedido" id="titulo_pedido"></h4>
         <div class="table-responsive" id="relacao_pedidos">
           <table class="table">
             <thead>
@@ -51,17 +52,25 @@
         </div>
       </div>
       <div id="div_modal_pedidos" ></div>
+      <div id="div_modal_codigo_produto" ></div>
       <div class="floating-buttons">
-        <table class="table mt-3 ml-3 mr-3 ">
-          <thead>
-            <tr>
-              <td id="subtotal">R$ 0,00</td>
-              <td id="fechar_mesa" onclick="impressao()">Fechar Mesa</td>
-            </tr>
-          </thead>
-          <tbody id="tbody_itens_pedido">
-          </tbody>
-        </table>  
+        <div class="row">
+          <div class="col-12">
+            <table class="table mt-3 ml-3 mr-3 ">
+              <thead>
+                <tr>
+                  <td><button class="btn btn-info redondo" onclick="abrir_modal_gera_pedidos_codigo_produto()"><i class="fa fa-barcode" aria-hidden="true"></i>
+                  </button></td>
+
+                  <td id="subtotal" >R$ 0,00</td>
+                  <td id="fechar_mesa"  onclick="impressao()"><button class="btn btn-outline-info">Fechar Mesa</button></td>
+                </tr>
+              </thead>
+              <tbody id="tbody_itens_pedido">
+              </tbody>
+            </table>  
+          </div>
+        </div>
       </div>
     </div>          
 		</div>

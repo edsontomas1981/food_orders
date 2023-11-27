@@ -1,17 +1,32 @@
 class Pedido {
-    constructor(numeroMesa) {
-        this.numeroMesa = numeroMesa;
+    constructor() {
         this.itens = [];
         this.subtotal = 0;
         this.loadPedidoFromLocalStorage(); // Carregar pedido do localStorage, se existir
     }
 
-    iniciarPedido() {
-        this.itens = [];
-        this.subtotal = 0;
-        console.log(`Pedido iniciado para a Mesa ${this.numeroMesa}`);
-        this.savePedidoToLocalStorage(); // Salvar pedido no localStorage ao iniciá-lo
-    }
+    iniciarPedido(numeroMesa) {
+        this.numeroMesa = numeroMesa;
+        
+        // Verificar se já existe um pedido para esta mesa no localStorage
+        const existingPedido = localStorage.getItem(`pedido_${this.numeroMesa}`);
+        
+        if (existingPedido) {
+          // Se existir, carregar o pedido existente
+          const parsedPedido = JSON.parse(existingPedido);
+          this.itens = parsedPedido.itens || [];
+          this.subtotal = parsedPedido.subtotal || 0;
+          console.log(`Pedido existente carregado para a Mesa ${this.numeroMesa}`);
+        } else {
+          // Se não existir, iniciar um novo pedido
+          this.itens = [];
+          this.subtotal = 0;
+          console.log(`Novo pedido iniciado para a Mesa ${this.numeroMesa}`);
+        }
+    
+        // Salvar pedido no localStorage ao iniciá-lo
+        this.savePedidoToLocalStorage();
+      }
 
     async adicionarItem (produtoId, quantidade) {
         const estoque = new Estoque();

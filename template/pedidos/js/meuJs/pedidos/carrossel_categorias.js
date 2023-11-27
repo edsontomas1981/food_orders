@@ -36,7 +36,6 @@ const gera_carrossel_pedidos = (estoque) =>{
             const cardText = document.createElement('p');
             cardText.className = 'card-text';
             let titulo_categoria_formatado = removerCaracteresEspeciais(categoria)
-            console.log(titulo_categoria_formatado)
             cardText.innerHTML = `<small class=" capitalizado">${titulo_categoria_formatado}</small>`;
 
             cardBody.appendChild(cardText);

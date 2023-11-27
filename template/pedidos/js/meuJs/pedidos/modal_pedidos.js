@@ -23,3 +23,15 @@ const btn_subtrai_qtde = (elemento)=>{
     var myModal = new bootstrap.Modal(document.getElementById('modal_gera_pedidos'));
     myModal.show();
   }
+
+  const abrir_modal_gera_pedidos_codigo_produto = (element)=>{
+    // var dataId = element.getAttribute("data-id");
+  
+    // gera_linhas_produtos(dataId)
+  
+    var myModal = new bootstrap.Modal(document.getElementById('modal_gera_pedidos_codigo_produtos'));
+    myModal.show();
+  }
+
+  
+
