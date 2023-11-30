@@ -1,7 +1,3 @@
-body{
-  background-color:#fff ;
-}
-
 .campo-erro {
     border: 1px solid #ff0000; /* Cor vermelha */
     background-color: #ffeeee; /* Cor de fundo de destaque */
@@ -102,7 +98,7 @@ body{
 
   .btn-add-exc-produtos{
     max-width: 15px;
-    max-height: 15px;
+    max-height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,6 +135,18 @@ body{
     background-color: cyan;
   }
 
+  .mesa-ocupada{
+    background-color: #007bff;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .mesa-ocupada a{
+    background-color: #007bff;
+    color:white; 
+
+  }
+
   .fab {
     position: fixed;
     top: 3%;
@@ -151,18 +159,19 @@ body{
     width: 48px;
     height: 48px;
     border-radius: 30px;
-    background-color: #cb60b3;
+    background-color: #007bff;
     border: none;
     box-shadow: 0 1px 5px rgba(0,0,0,.4);
     font-size: 24px;
     color: white;
   }
 
-
   .scrollable-div {
     overflow-x: auto;
     white-space: nowrap; /* Evita que o conteúdo quebre em várias linhas */
   }
+
+
 
   .token-mesa{
     font-size: 10px;
@@ -199,3 +208,37 @@ body{
   width: 90%; /* Ajusta a largura do modal */
   z-index: 1; /* Este elemento estará acima do outro elemento */
 }
+
+/* .bg-fundo{
+  background-color: #FEFAE0;
+} */
+
+/* .bg-primaria{
+  background-color: #5F6F52;
+}
+
+.bg-primaria h1{
+  background-color: #5F6F52;
+  color:#fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;    
+  font-weight: bold;
+
+} */
+
+
+/* 
+.secundario{
+  background-color: #A9B388;
+}
+
+.bg-botao{
+  background-color: #B99470;
+}
+
+.tabela-scrolavel {
+  max-height: 200px;
+  overflow-y: auto;
+} */

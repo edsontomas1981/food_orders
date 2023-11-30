@@ -6,13 +6,13 @@ function gerarBlocosHTML(lista) {
       blocoHTML.className = "col-xl-2 col-lg-2 col-md-2 col-sm-4 col-6 mb-4";
       
       // Adiciona a classe se 'vazia' for falsa
-      const cardBodyClass = item.vazia ? "" : "bg-warning";
+      const cardBodyClass = item.vazia ? "" : "mesa-ocupada";
       console.log(item.vazia)
 
       blocoHTML.innerHTML = `
         <div class="card ">
-          <div class="card-body ${cardBodyClass}  ">
-            <h7 class="card-title text-info">Mesa nº ${item.codigo}</h7>
+          <div class="card-body ${cardBodyClass} ">
+            <h7 class="card-title">Mesa nº ${item.codigo}</h7>
             <h7 class="mb-4 token-mesa"> ${item.descricao}</h7>
             <a href="#" class="btn btn-outline-info btn-sm" onclick="redirecionarParaOutraPagina('${item.codigo}')">View Order</a>
           </div>
@@ -21,6 +21,8 @@ function gerarBlocosHTML(lista) {
       conteudoDiv.appendChild(blocoHTML);
     });
   }
+
+  
 
   $(document).ready(function(){
     $('.your-class').slick({
@@ -76,6 +78,6 @@ function gerarBlocosHTML(lista) {
 ]
     
   ;
-
   // Chamar a função com o exemplo de dicionário
   gerarBlocosHTML(exemploDicionario);
+

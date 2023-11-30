@@ -7,12 +7,12 @@ const gera_menu = ()=>{
       div_sidebar.innerHTML = `
 
       <div class="custom-menu fab">
-        <button type="button" id="sidebarCollapse" class="bg-primary" >
+        <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
         <i class="fa fa-bars"></i>
         <span class="sr-only">Toggle Menu</span>
         </button>
       </div>
-      <h1><a href="index.html" class="logo">MesaDigital</a></h1>
+      <h1><a href="index.html" class="logo bg-primaria">MesaDigital</a></h1>
       <ul class="list-unstyled components mb-5">
         <li class="active">
         <a href="#"><span class="fa fa-home mr-3"></span> Homepage</a>

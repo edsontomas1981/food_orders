@@ -114,7 +114,6 @@ const popula_subtotal = (subtotal)=>{
 }
 
 const popula_tabela_pedidos =(pedidos)=>{
-  console.log(pedidos)
   const tabelaCorpo = document.getElementById('tbody_itens_pedido');
   tabelaCorpo.innerHTML = ''; // Limpar o conteúdo atual
 
@@ -237,8 +236,11 @@ const gera_pedidos = ()=>{
               </div>
               <div class="modal-body">
                 <div class="mb-3 row">
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control-plaintext" id="codigo_produto" placeholder="Digite o código do produto">
+                  <div class="col-sm-12">
+                      <div class="form-floating mb-3">
+                          <input type="email" class="form-control border" id="codigo_produto" placeholder="name@example.com">
+                          <label for="codigo_produto">Quantidade</label>
+                      </div>
                   </div>
                 </div>
               <div class="row" id="linha_produtos_id"></div>
@@ -256,5 +258,8 @@ const gera_pedidos = ()=>{
     const impressao = ()=>{
 
     obj_pedido.imprimirPedido()
+    popula_tabela_pedidos(obj_pedido.itens)
+    popula_subtotal(obj_pedido.subtotal)
     localStorage.removeItem('pedido_'+obj_pedido.numeroMesa)
+
   }
