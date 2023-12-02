@@ -96,6 +96,20 @@
     text-align: left;
   }
 
+  .totais{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: right;
+    float: right;
+  }
+
+
+
+  .list-group {
+    list-style-type: none;
+  }
+
   .btn-add-exc-produtos{
     max-width: 15px;
     max-height: 25px;
@@ -154,6 +168,15 @@
     z-index: 1000;
   }
 
+  .btn-finalizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
   .fab button{
     cursor: pointer;
     width: 48px;
@@ -196,6 +219,34 @@
     align-items: center;
     text-align: center;    
     font-weight: bold;
+  }
+
+  .titulo-caixa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+    font-weight: bold;
+  }
+
+  .lado-direito-caixa{
+    margin-top: 11px;
+  }
+
+  .lado-esquerdo-caixa{
+    margin-top: 5%;
+  }
+
+
+
+  .titulo-caixa h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+    font-weight: bold;
+    color: #fff;
+
   }
 
   .modal-body {

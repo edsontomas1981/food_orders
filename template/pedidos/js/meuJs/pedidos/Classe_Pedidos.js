@@ -9,7 +9,7 @@ class Pedido {
         this.numeroMesa = numeroMesa;
         
         // Verificar se já existe um pedido para esta mesa no localStorage
-        const existingPedido = localStorage.getItem(`pedido_${this.numeroMesa}`);
+        const existingPedido = localStorage.getItem(`${this.numeroMesa}`);
         
         if (existingPedido) {
           // Se existir, carregar o pedido existente
@@ -96,7 +96,7 @@ class Pedido {
     }
 
     loadPedidoFromLocalStorage() {
-        const savedPedido = localStorage.getItem(`pedido_${this.numeroMesa}`);
+        const savedPedido = localStorage.getItem(`${this.numeroMesa}`);
 
         if (savedPedido) {
             const parsedPedido = JSON.parse(savedPedido);
@@ -105,13 +105,18 @@ class Pedido {
         }
     }
 
+    recuperaPedidoLocalStoragePorMesa(mesa) {
+        const pedido_mesa = localStorage.getItem(mesa);
+        return pedido_mesa
+    }
+
     savePedidoToLocalStorage() {
         const dataToSave = {
             itens: this.itens,
             subtotal: this.subtotal
         };
 
-        localStorage.setItem(`pedido_${this.numeroMesa}`, JSON.stringify(dataToSave));
+        localStorage.setItem(`${this.numeroMesa}`, JSON.stringify(dataToSave));
     }
    
 

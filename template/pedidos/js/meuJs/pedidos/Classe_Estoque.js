@@ -135,6 +135,20 @@ class Estoque {
         }
     }
 
+    obterItemPorId(id) {
+        for (const categoria in this.estoque) {
+            if (this.estoque.hasOwnProperty(categoria)) {
+                const itemEncontrado = this.estoque[categoria].find(item => item.id === id);
+                if (itemEncontrado) {
+                    // Retorna o item encontrado
+                    return { ...itemEncontrado, categoria };
+                }
+            }
+        }
+        // Retorna null se o item não for encontrado
+        return null;
+    }
+
     buscarItensPorIdSimilar(id) {
         const idStr = id.toString();
         const itensSemelhantes = [];

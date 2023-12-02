@@ -13,6 +13,10 @@
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Tippy.js mudar depois para versão produção-->
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
@@ -29,70 +33,119 @@
       <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5 ">
         <div class="row bg-fundo">
-            <!-- Scroll bar present and enabled when more contents -->        
-            <div class="col-sm-5 row" style="width: 300px; height: 400px; overflow-y: scroll;" id="div_atendimento_caixa">
-
-            </div>  
-            <div class="col-sm-7 pl-4 pr-1 mt-1">
-                <div class="row">
-                  <div class="col-sm-12 pl-2">
+          <div class="col-sm-12 titulo-caixa bg-primary"><h1>Caixa</h1></div>
+              <div class="col-sm-5">
+                <div class="row lado-esquerdo-caixa">
+                  <div class="col-sm-12 pl-1 pr-0 mb-0">
                       <div class="form-floating mb-3">
                           <input type="text" class="form-control border" id="numero_comanda" placeholder="name@example.com">
                           <label for="numero_comanda">Número da Comanda</label>
                       </div>
                   </div>
-                  <div class="col-sm-4 pl-2">
-                      <div class="form-floating mb-3">
-                          <input type="email" class="form-control border" id="codigo_produto" placeholder="name@example.com">
-                          <label for="codigo_produto">Quantidade</label>
-                      </div>
-                  </div>
-                  <div class="col-sm-4">
+                  <div class="col-sm-4 pr-0 pl-1 pr-0 mt-0">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control border" id="codigo_produto" placeholder="name@example.com">
-                        <label for="codigo_produto">Código do Produto</label>
+                        <input type="text " class="form-control border " id="codigo_produto" placeholder="name@example.com">
+                        <label for="codigo_produto" class="pl-1">Código Produto</label>
                     </div>
                   </div>  
-                  <div class="col-sm-4">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control border" id="codigo_produto" placeholder="name@example.com">
-                        <label for="codigo_produto">Preço</label>
+                  <div class="col-sm-4 pl-1 pr-0 mt-0">
+                      <div class="form-floating mb-3">
+                          <input type="text" class="form-control border" id="codigo_produto" placeholder="name@example.com">
+                          <label for="codigo_produto" class="pl-1">Quantidade</label>
+                      </div>
+                  </div>
+                  <div class="col-sm-4 pl-1 pr-0 mt-0">
+                    <div class="form-floating mb-3 pl-0">
+                        <input type="text" class="form-control border" id="codigo_produto" placeholder="name@example.com">
+                        <label for="codigo_produto" class="pl-1">Preço</label>
                     </div>
-                  </div>   
-                  <div class="col-sm-12 row pl-4" style="width: 300px; height: 200px; overflow-y: scroll;">
-                    <table class="table table-sm">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>                                       
+                  </div> 
+                  <div class="col-sm-6 pl-1 pr-0">
+                    <div class="form-floating mb-3 pl-0">
+                        <input type="text" class="form-control border" id="codigo_produto" placeholder="name@example.com">
+                        <label for="codigo_produto" class="pl-1">Taxa</label>
+                    </div>
+                  </div> 
+                  <div class="col-sm-6 pl-1 pr-0">
+                    <div class="form-floating mb-3 pl-0">
+                        <input type="text" class="form-control border" id="codigo_produto" placeholder="name@example.com">
+                        <label for="codigo_produto" class="pl-1">Desconto</label>
+                    </div>
+                  </div> 
+                                                    
+                  <div class="col-sm-3">
+                    <button class="btn btn-outline-primary btn-finalizar redondo" id="finalizar_pedido"><i class="fa fa-money" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <div class="col-sm-3">
+                    <button class="btn btn-outline-success btn-finalizar redondo" id="dividir_conta"><i class="fa fa-users" aria-hidden="true"></i>
+                    </i>
+                    </button>
+                  </div>                
+                  <div class="col-sm-3">
+                    <button class="btn btn-outline-danger btn-finalizar redondo" id="cancelar_pedido"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                  </div>                  
+                  <div class="col-sm-3">
+                    <button class="btn btn-outline-info btn-finalizar redondo" id="imprimir_recibo"><i class="fa fa-users" aria-hidden="true"></i>
+                    </i>
+                    </button>
+                  </div>                                              
                 </div>
             </div>
+            <div class="col-sm-7 row pl-5 lado-direito-caixa">
+              <div class="col-sm-12" style="width: 300px; height: 200px; overflow-y: scroll;">
+                <table class="table table-borderless table-sm">
+                  <thead>
+                    <tr class="bg-primary">
+                      <th colspan="4" style="text-align: center;">Itens</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">Descrição</th>
+                      <th scope="col">Qtde</th>
+                      <th scope="col">Valor Unitário</th>
+                      <th scope="col">Valor Total</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="itens_caixa">
+                  </tbody>
+                </table>
+              </div>
+              <div >
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Total R$ <span class="totais">9,00</span></li>
+                  <li class="list-group-item">Descontos R$ <span class="totais">9,00</span></li>
+                  <li class="list-group-item">Taxa R$ <span class="totais">9,00</span></li>
+                </ul>
+              </div>              
+            </div>
+            <div class="col-sm-12 titulo-caixa bg-primary"><h1>Total R$ <span id="total"></span></h1></div>
         </div>
       </div>
     </div>          
 		</div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
     <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="./js/jquery-migrate-1.2.1.min.js"></script>    
     <script src="./js/popper.js"></script>
-    <!-- <script src="./js/bootstrap.min.js"></script> -->
     <script src="./js/main.js"></script>
     <script type="text/javascript" src="./js/slick/slick.min.js"></script>
-    <script src="./js/meuJs/mesa/gerar_mesas_caixa.js"></script>
     <script src="./js/meuJs/utils/menu.js"></script>
-    <script src="./js/meuJs/pdv/pdv.js"></script>
+    <script src="./js/meuJs/utils/tooltip.js"></script>    
+    
+    <script src="./js/meuJs/pedidos/Classe_Item.js"></script>
+    <script src="./js/meuJs/pedidos/Classe_Pedidos.js"></script>
+    <script src="./js/meuJs/pedidos/Classe_Estoque.js"></script>
+
+    <script src="./js/meuJs/caixa/caixa.js"></script>
+    <script src="./js/meuJs/caixa/inpt_cod_item.js"></script>
+    
+    <script src="./js/meuJs/utils/limpa_tabelas.js"></script>
+    <script src="./js/meuJs/utils/popula_tbody.js"></script>
+    <script src="./js/meuJs/caixa/Classe_caixa.js"></script>
+    <script src="./js/meuJs/caixa/inpt_numero_comanda.js"></script>
+    
   </body>
 </html>
